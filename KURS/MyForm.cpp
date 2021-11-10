@@ -21,6 +21,7 @@ void main(array<String^>^ args) {
 		
 	//EXAMPLE//  // NE OSTAVLYAT I ZAMENIT
 	travel[1].count_point=1;	//kolvo tochek
+	travel[1].TravelNumber = 19; // nomer marchruta
 	for (int i = 0; i < travel[1].count_point; i++) //zanesenie tochek
 	{
 		travel[1].point_arrayX[i] = 1;

@@ -5,6 +5,7 @@ class Traveler
 {
 public:
 	int count_point;
+	int TravelNumber;
 	int *point_arrayX;
 	int *point_arrayY;
 	int startTime;
