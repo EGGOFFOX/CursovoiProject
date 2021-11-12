@@ -138,11 +138,14 @@
     <ClCompile Include="INF.cpp" />
     <ClCompile Include="March.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="dateloader.cpp" />
+    <ClCompile Include="Traveler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FINDER.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="dateloader.h" />
     <ClInclude Include="HELP.h">
       <FileType>CppForm</FileType>
     </ClInclude>
