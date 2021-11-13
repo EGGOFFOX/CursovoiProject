@@ -105,7 +105,7 @@ void parseJsonDate(Traveler* Paths, int amountPaths)
 	std::string line;
 	while (getline(in, line))
 	{
-		if (line.find("number") != std::string::npos)
+		if (line.find("travelNumber") != std::string::npos)
 		{
 			travelerNumber = stoi(parseJsonLine(line));
 			for (int i = 0; i < amountPaths; i++)
