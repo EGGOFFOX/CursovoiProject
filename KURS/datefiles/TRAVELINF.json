@@ -5,8 +5,8 @@
       "interval": 15,
       "startTime": 360,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "9,28 км",
+      "cost": 8,
+      "lengthWay": 9.28,
       "OOO": "ОАО \"ЗАТП 12329\""
     },
     {
@@ -14,8 +14,8 @@
       "interval": 25,
       "startTime": 360,
       "endTime": 1170,
-      "cost": "8 грн ",
-      "lengthWay": "6,59 км",
+      "cost": 8,
+      "lengthWay": 6.59,
       "OOO": "ООО \"ТК \" Гранд Авто\""
     },
     {
@@ -23,8 +23,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "9 грн ",
-      "lengthWay": "16,51 км",
+      "cost": 9,
+      "lengthWay": 16.51,
       "OOO": "ООО \"СИЧ Ал'янс ГРУПП\""
     },
     {
@@ -32,8 +32,8 @@
       "interval": 10,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "15,37 км",
+      "cost": 8,
+      "lengthWay": 15.37,
       "OOO": "ООО \"Пригородные сообщения\""
     },
     {
@@ -41,8 +41,8 @@
       "interval": 15,
       "startTime": 360,
       "endTime": 1260,
-      "cost": "8 грн ",
-      "lengthWay": "25,78 км",
+      "cost": 8,
+      "lengthWay": 25.78,
       "OOO": "ООО \"Профтакси 1\""
     },
     {
@@ -50,8 +50,8 @@
       "interval": 25,
       "startTime": 360,
       "endTime": 1260,
-      "cost": "9 грн ",
-      "lengthWay": "23,25 км",
+      "cost": 9,
+      "lengthWay": 23.25,
       "OOO": "ОАО \"Автопарк\""
     },
     {
@@ -59,8 +59,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "24,04 км",
+      "cost": 8,
+      "lengthWay": 24.04,
       "OOO": "ООО \"Запорізька автотранспортна компанія\""
     },
     {
@@ -68,8 +68,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "14,03 км",
+      "cost": 8,
+      "lengthWay": 14.03,
       "OOO": "ООО \"Альфа транс\""
     },
     {
@@ -77,8 +77,8 @@
       "interval": 40,
       "startTime": 360,
       "endTime": 1200,
-      "cost": "8 грн ",
-      "lengthWay": "24,64 км",
+      "cost": 8,
+      "lengthWay": 24.64,
       "OOO": "ООО \"Транспортна компанія \"Спрінт Авто\""
     },
     {
@@ -86,8 +86,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "10,46 км",
+      "cost": 8,
+      "lengthWay": 10.46,
       "OOO": "ОАО \"ЗАТП 12329\""
     },
     {
@@ -95,8 +95,8 @@
       "interval": 15,
       "startTime": 0,
       "endTime": 1210,
-      "cost": "8 грн ",
-      "lengthWay": "18,94 км",
+      "cost": 8,
+      "lengthWay": 18.94,
       "OOO": "ЧП \"Микитенко М.О.\""
     },
     {
@@ -104,8 +104,8 @@
       "interval": 15,
       "startTime": 360,
       "endTime": 1290,
-      "cost": "8 грн ",
-      "lengthWay": "23,19 км",
+      "cost": 8,
+      "lengthWay": 23.19,
       "OOO": "ООО \"Запорожградтранс\""
     },
     {
@@ -113,8 +113,8 @@
       "interval": 30,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "30,02 км",
+      "cost": 8,
+      "lengthWay": 30.02,
       "OOO": "ООО \"Автопростір Запоріжжя\""
     },
     {
@@ -122,8 +122,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "15,79 км",
+      "cost": 8,
+      "lengthWay": 15.79,
       "OOO": "ООО \"Ал'янс Авто\""
     },
     {
@@ -131,8 +131,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "20,85 км",
+      "cost": 8,
+      "lengthWay": 20.85,
       "OOO": "ООО \"Юністар-Авто\""
     },
     {
@@ -140,8 +140,8 @@
       "interval": 15,
       "startTime": 360,
       "endTime": 1380,
-      "cost": "8 грн ",
-      "lengthWay": "17,83 км",
+      "cost": 8,
+      "lengthWay": 17.83,
       "OOO": "ООО \"Ал'янс Авто\""
     },
     {
@@ -149,8 +149,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "20,27 км",
+      "cost": 8,
+      "lengthWay": 20.27,
       "OOO": "ООО \"Пригородные сообщения\""
     },
     {
@@ -158,8 +158,8 @@
       "interval": 10,
       "startTime": 367,
       "endTime": 1330,
-      "cost": "8 грн ",
-      "lengthWay": "15,83 км",
+      "cost": 8,
+      "lengthWay": 15.83,
       "OOO": "ОАО \"ЗАТП 12329\""
     },
     {
@@ -167,8 +167,8 @@
       "interval": 15,
       "startTime": 330,
       "endTime": 1320,
-      "cost": "8 грн ",
-      "lengthWay": "17,93 км",
+      "cost": 8,
+      "lengthWay": 17.93,
       "OOO": "ЧП \"Ефименко О.И.\""
     }
   ]

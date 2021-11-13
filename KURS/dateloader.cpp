@@ -25,7 +25,7 @@ std::string parseJsonLine(std::string str, bool isValueString = false)
 int* parseCsvLine(std::string str, std::string delimiter)
 {
 	//Parse int values.
-	//Return: int dynamic massive.
+	//Return: int massive.
 
 	int* array = new int[0];
 	int* oldArray;
@@ -59,11 +59,13 @@ int* parseCsvLine(std::string str, std::string delimiter)
 void parseCsvDate(Traveler* Paths)
 {
 	//Parse structure .csv like int(travel number), int(count points),int(points x)...int(points y).
-	//parsed_cells_values[1] is amount of the points.
+	//2 + i because of structure.
 
-	int countPaths = 0;
+	int countParsedPaths = 0;
 	int* pointsX;
 	int* pointsY;
+	int countPoints;
+
 	std::ifstream in(fileCsv);
 	if (in.is_open())
 	{
@@ -71,19 +73,19 @@ void parseCsvDate(Traveler* Paths)
 		while (getline(in, line))
 		{
 			int* parsedCellsValues = parseCsvLine(line, ",");
-			Paths[countPaths].setTravelNumber(parsedCellsValues[0]);
-			Paths[countPaths].setCountPoints(parsedCellsValues[1]);
+			Paths[countParsedPaths].setTravelNumber(parsedCellsValues[0]);
 
-			pointsX = new int[parsedCellsValues[1]];
-			pointsY = new int[parsedCellsValues[1]];
-			for (int i = 0, currentPositionPoint = 0; i < parsedCellsValues[1]; i++, currentPositionPoint++)
+			countPoints = parsedCellsValues[1];
+			pointsX = new int[countPoints];
+			pointsY = new int[countPoints];
+			for (int i = 0; i < countPoints; i++)
 			{
-				pointsX[currentPositionPoint] = parsedCellsValues[2 + i];
-				pointsY[currentPositionPoint] = parsedCellsValues[2 + parsedCellsValues[1] + i];
+				pointsX[i] = parsedCellsValues[2 + i];
+				pointsY[i] = parsedCellsValues[2 + countPoints + i];
 			}
-			Paths[countPaths].setPointArrayX(pointsX);
-			Paths[countPaths].setPointArrayY(pointsY);
-			countPaths++;
+			Paths[countParsedPaths].setPointArrayX(pointsX, countPoints);
+			Paths[countParsedPaths].setPointArrayY(pointsY, countPoints);
+			countParsedPaths++;
 
 			delete[] parsedCellsValues;
 		}
@@ -119,9 +121,9 @@ void parseJsonDate(Traveler* Paths, int amountPaths)
 					getline(in, line);
 					Paths[i].setEndTime(stoi(parseJsonLine(line)));
 					getline(in, line);
-					Paths[i].setCost(parseJsonLine(line, true));
+					Paths[i].setCost(stof(parseJsonLine(line)));
 					getline(in, line);
-					Paths[i].setLengthWay(parseJsonLine(line, true));
+					Paths[i].setLengthWay(stof(parseJsonLine(line)));
 					getline(in, line);
 					Paths[i].setOwner(parseJsonLine(line, true));
 				}
