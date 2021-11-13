@@ -7,6 +7,7 @@
 std::string fileJson = "datefiles/TRAVELINF.json";
 std::string fileCsv = "datefiles/POINTS.csv";
 
+//TODO : handling exceptions
 std::string parseJsonLine(std::string str, bool isValueString = false)
 {
 	std::string parsedValue;
