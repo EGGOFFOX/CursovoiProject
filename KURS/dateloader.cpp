@@ -4,6 +4,9 @@
 #include "Traveler.h"
 #include "dateloader.h"
 
+std::string fileJson = "datefiles/TRAVELINF.json";
+std::string fileCsv = "datefiles/POINTS.csv";
+
 std::string parseJsonLine(std::string str, bool isValueString = false)
 {
 	std::string parsedValue;
@@ -60,7 +63,7 @@ void parseCsvDate(Traveler* Paths)
 	int countPaths = 0;
 	int* pointsX;
 	int* pointsY;
-	std::ifstream in("datefiles/POINTS.csv");
+	std::ifstream in(fileCsv);
 	if (in.is_open())
 	{
 		std::string line;
@@ -97,7 +100,7 @@ void parseJsonDate(Traveler* Paths, int amountPaths)
 
 	int travelerNumber = -1;
 
-	std::ifstream in("datefiles/TRAVELINF.json");
+	std::ifstream in(fileJson);
 	std::string line;
 	while (getline(in, line))
 	{
