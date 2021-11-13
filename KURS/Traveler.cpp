@@ -3,43 +3,43 @@
 #include "Traveler.h"
 
 	//TODO:Validate set-get date
-	void Traveler::set_count_points(int count) { count_points = count; }
-	void Traveler::set_TravelNumber(int number) { TravelNumber = number; }
-	void Traveler::set_point_arrayX(int* point_array) { point_arrayX = point_array; }
-	void Traveler::set_point_arrayY(int* point_array) { point_arrayY = point_array; }
-	void Traveler::set_TravelTime(int time) { TravelTime = time; }
-	void Traveler::set_startTime(int time) { startTime = time; }
-	void Traveler::set_endTime(int time) { endTime = time; }
-	void Traveler::set_cost(std::string str) { cost = str; }
-	void Traveler::set_lengthWay(std::string str) { lengthWay = str; }
-	void Traveler::set_owner(std::string str) { owner = str; }
-	int Traveler::get_count_points() { return count_points; }
-	int Traveler::get_TravelNumber() { return TravelNumber; }
-	void Traveler::get_point_arrayX()
+	void Traveler::setCountPoints(int count) { countPoints_ = count; }
+	void Traveler::setTravelNumber(int number) { travelNumber_ = number; }
+	void Traveler::setPointArrayX(int* pointArray) { pointArrayX_ = pointArray; }
+	void Traveler::setPointArrayY(int* pointArray) { pointArrayY_ = pointArray; }
+	void Traveler::setTravelTime(int time) { travelTime_ = time; }
+	void Traveler::setStartTime(int time) { startTime_ = time; }
+	void Traveler::setEndTime(int time) { endTime_ = time; }
+	void Traveler::setCost(std::string str) { cost_ = str; }
+	void Traveler::setLengthWay(std::string str) { lengthWay_ = str; }
+	void Traveler::setOwner(std::string str) { owner_ = str; }
+	int Traveler::getCountPoints() { return countPoints_; }
+	int Traveler::getTravelNumber() { return travelNumber_; }
+	void Traveler::getPointArrayX()
 	{
-		for (int i = 0; i < count_points; i++)
-			std::cout << point_arrayX[i] << std::endl;
+	/*	for (int i = 0; i < count_points; i++)
+			std::cout << point_arrayX[i] << std::endl;*/
 	}
-	void Traveler::get_point_arrayY()
+	void Traveler::getPointArrayY()
 	{
-		for (int i = 0; i < count_points; i++)
-			std::cout << point_arrayY[i] << std::endl;
+		/*for (int i = 0; i < count_points; i++)
+			std::cout << point_arrayY[i] << std::endl;*/
 	}
-	int Traveler::get_TravelTime() { return TravelTime; }
-	int Traveler::get_endTime() { return endTime; }
-	int Traveler::get_startTime() { return startTime; }
-	std::string Traveler::get_cost() { return cost; }
-	std::string Traveler::get_lengthWay() { return lengthWay; }
-	std::string Traveler::get_owner() { return owner; }
+	int Traveler::getTravelTime() { return travelTime_; }
+	int Traveler::getEndTime() { return endTime_; }
+	int Traveler::getStartTime() { return startTime_; }
+	std::string Traveler::getCost() { return cost_; }
+	std::string Traveler::getLengthWay() { return lengthWay_; }
+	std::string Traveler::getOwner() { return owner_; }
 	Traveler::Traveler()
 	{
-		startTime = 0;
-		endTime = 0;
-		TravelNumber = -1;
-		count_points = 0;
-		TravelTime = 0;
-		point_arrayX = new int[0];
-		point_arrayY = new int[0];
+		startTime_ = 0;
+		endTime_ = 0;
+		travelNumber_ = -1;
+		countPoints_ = 0;
+		travelTime_ = 0;
+		pointArrayX_ = new int[0];
+		pointArrayY_ = new int[0];
 	}
 	//Traveler(int count, int *X, int *Y, int start, int end, int TimeForTravel)
 	//{
@@ -53,6 +53,6 @@
 	//}
 	Traveler::~Traveler()
 	{
-		delete[] point_arrayX;
-		delete[] point_arrayY;
+		delete[] pointArrayX_;
+		delete[] pointArrayY_;
 	}

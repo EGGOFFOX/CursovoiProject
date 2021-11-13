@@ -1,4 +1,4 @@
 #pragma once
 #include "Traveler.h"
 
-void get_Travelers_date(Traveler* travelers, int amountTravelers);
+void getTravelersDate(Traveler* Travelers, int amountTravelers);

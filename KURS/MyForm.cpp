@@ -15,22 +15,20 @@ using namespace System::Windows::Forms;
 
 void main() {
 	Traveler* Travelers = new Traveler[19];
-	get_Travelers_date(Travelers, 19);
-
+	getTravelersDate(Travelers, 19);
 	/*for (int i = 0; i < 19; i++) 
 	{
-		std::cout << "Travel Number:" << Travelers[i].get_TravelNumber() << std::endl;
-		std::cout << "Amount Points:" << Travelers[i].get_count_points() << std::endl;
+		std::cout << "Travel Number:" << Travelers[i].getTravelNumber() << std::endl;
+		std::cout << "Amount Points:" << Travelers[i].getCountPoints() << std::endl;
 		std::cout << "Point X: " << std::endl;
-		Travelers[i].get_point_arrayX();
-		std::cout << "Interval:" << Travelers[i].get_TravelTime() << std::endl;
-		std::cout << "Start:" << Travelers[i].get_startTime() << std::endl;
-		std::cout << "End:" << Travelers[i].get_endTime() << std::endl;
-		std::cout << "WayLength:" << Travelers[i].get_lengthWay() << std::endl;
-		std::cout << "Cost:" << Travelers[i].get_cost() << std::endl;
-		std::cout << "Owner:" << Travelers[i].get_owner() << std::endl;
+		Travelers[i].getPointArrayX();
+		std::cout << "Interval:" << Travelers[i].getTravelTime() << std::endl;
+		std::cout << "Start:" << Travelers[i].getStartTime() << std::endl;
+		std::cout << "End:" << Travelers[i].getEndTime() << std::endl;
+		std::cout << "WayLength:" << Travelers[i].getLengthWay() << std::endl;
+		std::cout << "Cost:" << Travelers[i].getCost() << std::endl;
+		std::cout << "Owner:" << Travelers[i].getOwner() << std::endl;
 	}*/
-
 	delete[] Travelers;
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);

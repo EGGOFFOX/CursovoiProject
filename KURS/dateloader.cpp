@@ -4,7 +4,7 @@
 #include "Traveler.h"
 #include "dateloader.h"
 
-std::string parse_JSONline(std::string str, bool isValueString = false)
+std::string parseJsonLine(std::string str, bool isValueString = false)
 {
 	std::string parsedValue;
 	parsedValue = str.substr(str.find(":") + 2, str.size() - str.find(":"));
@@ -14,47 +14,45 @@ std::string parse_JSONline(std::string str, bool isValueString = false)
 		parsedValue.pop_back();
 		parsedValue.erase(0, 1);
 	}
-
 	return parsedValue;
 }
+
 //TODO : handling exceptions
-int* parse_CSVline(std::string str, std::string delimiter)
+int* parseCsvLine(std::string str, std::string delimiter)
 {
 	//Parse int values.
 	//Return: int dynamic massive.
 
 	int* array = new int[0];
-	int* oldarray;
+	int* oldArray;
 	int countCells = 0;
-
 
 	size_t pos = 0;
 	std::string value;
 	while ((pos = str.find(delimiter)) != std::string::npos) {
 		value = str.substr(0, pos);
 		if (value != "\n") {
-			oldarray = array;
+			oldArray = array;
 			array = new int[countCells + 1];
 			for (int i = 0; i < countCells; i++)
-				array[i] = oldarray[i];
+				array[i] = oldArray[i];
 			array[countCells] = stoi(value);
 			countCells++;
-			delete[] oldarray;
+			delete[] oldArray;
 		}
 		str.erase(0, pos + delimiter.length());
 	}
-	oldarray = array;
+	oldArray = array;
 	array = new int[countCells + 1];
 	for (int i = 0; i < countCells; i++)
-		array[i] = oldarray[i];
+		array[i] = oldArray[i];
 	array[countCells] = stoi(str);
-	delete[] oldarray;
-
+	delete[] oldArray;
 	return array;
 }
 
 //TODO : handling exceptions
-void parse_CSVdate(Traveler* paths)
+void parseCsvDate(Traveler* Paths)
 {
 	//Parse structure .csv like int(travel number), int(count points),int(points x)...int(points y).
 	//parsed_cells_values[1] is amount of the points.
@@ -68,22 +66,22 @@ void parse_CSVdate(Traveler* paths)
 		std::string line;
 		while (getline(in, line))
 		{
-			int* parsed_cells_values = parse_CSVline(line, ",");
-			paths[countPaths].set_TravelNumber(parsed_cells_values[0]);
-			paths[countPaths].set_count_points(parsed_cells_values[1]);
+			int* parsedCellsValues = parseCsvLine(line, ",");
+			Paths[countPaths].setTravelNumber(parsedCellsValues[0]);
+			Paths[countPaths].setCountPoints(parsedCellsValues[1]);
 
-			pointsX = new int[parsed_cells_values[1]];
-			pointsY = new int[parsed_cells_values[1]];
-			for (int i = 0, currentPositionPoint = 0; i < parsed_cells_values[1]; i++, currentPositionPoint++)
+			pointsX = new int[parsedCellsValues[1]];
+			pointsY = new int[parsedCellsValues[1]];
+			for (int i = 0, currentPositionPoint = 0; i < parsedCellsValues[1]; i++, currentPositionPoint++)
 			{
-				pointsX[currentPositionPoint] = parsed_cells_values[2 + i];
-				pointsY[currentPositionPoint] = parsed_cells_values[2 + parsed_cells_values[1] + i];
+				pointsX[currentPositionPoint] = parsedCellsValues[2 + i];
+				pointsY[currentPositionPoint] = parsedCellsValues[2 + parsedCellsValues[1] + i];
 			}
-			paths[countPaths].set_point_arrayX(pointsX);
-			paths[countPaths].set_point_arrayY(pointsY);
+			Paths[countPaths].setPointArrayX(pointsX);
+			Paths[countPaths].setPointArrayY(pointsY);
 			countPaths++;
 
-			delete[] parsed_cells_values;
+			delete[] parsedCellsValues;
 		}
 	}
 	else {
@@ -93,35 +91,35 @@ void parse_CSVdate(Traveler* paths)
 }
 
 //TODO : handling exceptions
-void parse_JSONdate(Traveler* paths, int amountPaths)
+void parseJsonDate(Traveler* Paths, int amountPaths)
 {
 	//THIS function works with the massive received after csv parsing.
 
-	int Travelernumber = -1;
+	int travelerNumber = -1;
 
 	std::ifstream in("datefiles/TRAVELINF.json");
 	std::string line;
 	while (getline(in, line))
 	{
-		if (line.find("NUMBER") != std::string::npos)
+		if (line.find("number") != std::string::npos)
 		{
-			Travelernumber = stoi(parse_JSONline(line));
+			travelerNumber = stoi(parseJsonLine(line));
 			for (int i = 0; i < amountPaths; i++)
 			{
-				if (paths[i].get_TravelNumber() == Travelernumber)
+				if (Paths[i].getTravelNumber() == travelerNumber)
 				{
 					getline(in, line);
-					paths[i].set_TravelTime(stoi(parse_JSONline(line)));
+					Paths[i].setTravelTime(stoi(parseJsonLine(line)));
 					getline(in, line);
-					paths[i].set_startTime(stoi(parse_JSONline(line)));
+					Paths[i].setStartTime(stoi(parseJsonLine(line)));
 					getline(in, line);
-					paths[i].set_endTime(stoi(parse_JSONline(line)));
+					Paths[i].setEndTime(stoi(parseJsonLine(line)));
 					getline(in, line);
-					paths[i].set_cost(parse_JSONline(line, true));
+					Paths[i].setCost(parseJsonLine(line, true));
 					getline(in, line);
-					paths[i].set_lengthWay(parse_JSONline(line, true));
+					Paths[i].setLengthWay(parseJsonLine(line, true));
 					getline(in, line);
-					paths[i].set_owner(parse_JSONline(line, true));
+					Paths[i].setOwner(parseJsonLine(line, true));
 				}
 			}
 		}
@@ -129,8 +127,8 @@ void parse_JSONdate(Traveler* paths, int amountPaths)
 	in.close();
 }
 
-void get_Travelers_date(Traveler* travelers, int amountTravelers)
+void getTravelersDate(Traveler* Travelers, int amountTravelers)
 {
-	parse_CSVdate(travelers);
-	parse_JSONdate(travelers, amountTravelers);
+	parseCsvDate(Travelers);
+	parseJsonDate(Travelers, amountTravelers);
 }
