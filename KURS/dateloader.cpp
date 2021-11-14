@@ -8,7 +8,7 @@ std::string fileJson = "datefiles/TRAVELINF.json";
 std::string fileCsv = "datefiles/POINTS.csv";
 
 //TODO : handling exceptions
-std::string parseJsonLine(std::string str, bool isValueString = false)
+std::string parseJsonValue(std::string str, bool isValueString = false)
 {
 	std::string parsedValue;
 	parsedValue = str.substr(str.find(":") + 2, str.size() - str.find(":"));
@@ -22,7 +22,7 @@ std::string parseJsonLine(std::string str, bool isValueString = false)
 }
 
 //TODO : handling exceptions
-int* parseCsvLine(std::string str, std::string delimiter)
+int* parseCsvValues(std::string str, std::string delimiter)
 {
 	//Parse int values.
 	//Return: int massive.
@@ -59,35 +59,35 @@ int* parseCsvLine(std::string str, std::string delimiter)
 void parseCsvDate(Traveler* Paths)
 {
 	//Parse structure .csv like int(travel number), int(count points),int(points x)...int(points y).
-	//2 + i because of structure.
 
 	int countParsedPaths = 0;
 	int* pointsX;
 	int* pointsY;
+	int* parsedValues;
 	int countPoints;
+	std::string line;
 
 	std::ifstream in(fileCsv);
 	if (in.is_open())
 	{
-		std::string line;
 		while (getline(in, line))
 		{
-			int* parsedCellsValues = parseCsvLine(line, ",");
-			Paths[countParsedPaths].setTravelNumber(parsedCellsValues[0]);
+			parsedValues = parseCsvValues(line, ",");
+			Paths[countParsedPaths].setTravelNumber(parsedValues[0]);
 
-			countPoints = parsedCellsValues[1];
+			countPoints = parsedValues[1];
 			pointsX = new int[countPoints];
 			pointsY = new int[countPoints];
 			for (int i = 0; i < countPoints; i++)
 			{
-				pointsX[i] = parsedCellsValues[2 + i];
-				pointsY[i] = parsedCellsValues[2 + countPoints + i];
+				pointsX[i] = parsedValues[2 + i];
+				pointsY[i] = parsedValues[2 + countPoints + i];
 			}
 			Paths[countParsedPaths].setPointArrayX(pointsX, countPoints);
 			Paths[countParsedPaths].setPointArrayY(pointsY, countPoints);
 			countParsedPaths++;
 
-			delete[] parsedCellsValues;
+			delete[] parsedValues;
 		}
 	}
 	else {
@@ -102,33 +102,39 @@ void parseJsonDate(Traveler* Paths, int amountPaths)
 	//THIS function works with the massive received after csv parsing.
 
 	int travelerNumber = -1;
+	std::string line;
 
 	std::ifstream in(fileJson);
-	std::string line;
-	while (getline(in, line))
-	{
-		if (line.find("travelNumber") != std::string::npos)
+	if (in.is_open()){
+		while (getline(in, line))
 		{
-			travelerNumber = stoi(parseJsonLine(line));
-			for (int i = 0; i < amountPaths; i++)
+			if (line.find("travelNumber") != std::string::npos)
 			{
-				if (Paths[i].getTravelNumber() == travelerNumber)
+				travelerNumber = stoi(parseJsonValue(line));
+				for (int i = 0; i < amountPaths; i++)
 				{
-					getline(in, line);
-					Paths[i].setTravelTime(stoi(parseJsonLine(line)));
-					getline(in, line);
-					Paths[i].setStartTime(stoi(parseJsonLine(line)));
-					getline(in, line);
-					Paths[i].setEndTime(stoi(parseJsonLine(line)));
-					getline(in, line);
-					Paths[i].setCost(stof(parseJsonLine(line)));
-					getline(in, line);
-					Paths[i].setLengthWay(stof(parseJsonLine(line)));
-					getline(in, line);
-					Paths[i].setOwner(parseJsonLine(line, true));
+					if (Paths[i].getTravelNumber() == travelerNumber)
+					{
+						getline(in, line);
+						Paths[i].setTravelTime(stoi(parseJsonValue(line)));
+						getline(in, line);
+						Paths[i].setStartTime(stoi(parseJsonValue(line)));
+						getline(in, line);
+						Paths[i].setEndTime(stoi(parseJsonValue(line)));
+						getline(in, line);
+						Paths[i].setCost(stof(parseJsonValue(line)));
+						getline(in, line);
+						Paths[i].setLengthWay(stof(parseJsonValue(line)));
+						getline(in, line);
+						Paths[i].setOwner(parseJsonValue(line, true));
+					}
 				}
 			}
 		}
+	}
+	else 
+	{
+		std::cout << "The File not found" << std::endl;
 	}
 	in.close();
 }
