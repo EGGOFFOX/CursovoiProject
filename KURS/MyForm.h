@@ -239,9 +239,21 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		Controls->Add(btn);
 		buttons[iterator] = btn;
 	}
-	for (int i = 0; i < 19; i++)	this->buttons[i]->Location = Drawing::Point(Travelers[i].pointArrayX_[0], Travelers[i].pointArrayY_[0]);
+	//int* getPointArrayX();
+	
+	for (int i = 0; i < 19; i++)
+	{		
+		int* A = new int[Travelers[i].getCountPoints()];
+			A= Travelers[i].getPointArrayX();
+			int* B = new int[Travelers[i].getCountPoints()];
+		B = Travelers[i].getPointArrayY();
+		this->buttons[i]->Location = Drawing::Point(A[0],B[0]);
+		delete[] A;
+		delete[] B;
 
+	}
 		delete[] Travelers;
+		
 }
 private: System::Void MyForm_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e)
  {
