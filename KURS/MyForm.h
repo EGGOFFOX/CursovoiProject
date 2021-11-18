@@ -239,7 +239,7 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		Controls->Add(btn);
 		buttons[iterator] = btn;
 	}
-	//int* getPointArrayX();
+	
 	
 	for (int i = 0; i < 19; i++)
 	{		
