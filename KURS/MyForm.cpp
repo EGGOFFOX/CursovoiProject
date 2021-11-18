@@ -8,14 +8,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <sstream>;
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThread]
 
 void main() {
-	Traveler* Travelers = new Traveler[19];
-	getTravelersDate(Travelers, 19);
+	//Traveler* Travelers = new Traveler[19];
+	//getTravelersDate(Travelers, 19);
 	//for (int i = 0; i < 19; i++) 
 	//{
 	//	std::cout << "Travel Number:" << Travelers[i].getTravelNumber() << std::endl;
@@ -33,7 +33,8 @@ void main() {
 	//	std::cout << "Owner:" << Travelers[i].getOwner() << std::endl;
 	//	delete[] points;
 	//}
-	delete[] Travelers;
+	
+	//delete[] Travelers;
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	KURS::MyForm form;

@@ -3,7 +3,8 @@
 
 class Traveler
 {
-private:
+//private:
+public:
 	int countPoints_;
 	int travelNumber_;
 	int* pointArrayX_;
@@ -14,7 +15,7 @@ private:
 	float cost_;
 	float lengthWay_;
 	std::string owner_;
-public:
+//public:
 	void setTravelNumber(int number);
 	void setPointArrayX(int* pointArray, int count);
 	void setPointArrayY(int* pointArray, int count);
