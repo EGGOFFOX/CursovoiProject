@@ -1,5 +1,5 @@
 #include <string>
-#include <iostream>
+#include <vector>
 #include "Traveler.h"
 
 //TODO : handling exceptions
@@ -8,23 +8,15 @@
 		if (number > 0)
 			travelNumber_ = number; 
 	}
-	void Traveler::setPointArrayX(int* pointArray, int count) 
+	void Traveler::setPointArrayX(std::vector<int> pointArray) 
 	{ 
-		if (count > 0) 
-		{
-			countPoints_ = count;
-			delete[] pointArrayX_;
-			pointArrayX_ = pointArray;
-		}
+		countPoints_ = pointArray.size();
+		pointArrayX_ = pointArray;
 	}
-	void Traveler::setPointArrayY(int* pointArray, int count) 
+	void Traveler::setPointArrayY(std::vector<int> pointArray)
 	{
-		if (count > 0)
-		{
-			countPoints_ = count;
-			delete[] pointArrayY_;
-			pointArrayY_ = pointArray;
-		}
+		countPoints_ = pointArray.size();
+		pointArrayY_ = pointArray;
 	}
 	void Traveler::setTravelTime(int time) 
 	{ 
@@ -57,21 +49,13 @@
 	}
 	int Traveler::getCountPoints() { return countPoints_; }
 	int Traveler::getTravelNumber() { return travelNumber_; }
-	int* Traveler::getPointArrayX()
+	std::vector<int> Traveler::getPointArrayX()
 	{
-		int* pointArray = new int[countPoints_];
-		for (int i = 0; i < countPoints_; i++) {
-			pointArray[i] = pointArrayX_[i];
-		}
-		return pointArray;
+		return pointArrayX_;
 	}
-	int* Traveler::getPointArrayY()
+	std::vector<int> Traveler::getPointArrayY()
 	{
-		int* pointArray = new int[countPoints_];
-		for (int i = 0; i < countPoints_; i++) {
-			pointArray[i] = pointArrayY_[i];
-		}
-		return pointArray;
+		return pointArrayY_;
 	}
 	int Traveler::getTravelTime() { return travelTime_; }
 	int Traveler::getEndTime() { return endTime_; }
@@ -86,11 +70,7 @@
 		travelNumber_ = -1;
 		countPoints_ = 0;
 		travelTime_ = 0;
-		pointArrayX_ = new int[0];
-		pointArrayY_ = new int[0];
 	}
 	Traveler::~Traveler()
 	{
-		delete[] pointArrayX_;
-		delete[] pointArrayY_;
 	}

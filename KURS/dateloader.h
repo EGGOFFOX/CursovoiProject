@@ -1,4 +1,4 @@
 #pragma once
 #include "Traveler.h"
 
-void getTravelersDate(Traveler* Travelers, int amountTravelers);
+void getTravelersDate(std::vector<Traveler>& Travelers);

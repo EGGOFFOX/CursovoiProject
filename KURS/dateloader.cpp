@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "Traveler.h"
 #include "dateloader.h"
 
 std::string fileJson = "datefiles/TRAVELINF.json";
 std::string fileCsv = "datefiles/POINTS.csv";
+
 
 //TODO : handling exceptions
 std::string parseJsonValue(std::string str, bool isValueString = false)
@@ -22,50 +24,34 @@ std::string parseJsonValue(std::string str, bool isValueString = false)
 }
 
 //TODO : handling exceptions
-int* parseCsvValues(std::string str, std::string delimiter)
+std::vector<int> parseCsvValues(std::string str, std::string delimiter)
 {
-	//Parse int values.
-	//Return: int massive.
-
-	int* array = new int[0];
-	int* oldArray;
-	int countCells = 0;
-
+	std::vector<int> array;
 	size_t pos = 0;
 	std::string value;
+
 	while ((pos = str.find(delimiter)) != std::string::npos) {
 		value = str.substr(0, pos);
 		if (value != "\n") {
-			oldArray = array;
-			array = new int[countCells + 1];
-			for (int i = 0; i < countCells; i++)
-				array[i] = oldArray[i];
-			array[countCells] = stoi(value);
-			countCells++;
-			delete[] oldArray;
+			array.push_back(stoi(value));
 		}
 		str.erase(0, pos + delimiter.length());
 	}
-	oldArray = array;
-	array = new int[countCells + 1];
-	for (int i = 0; i < countCells; i++)
-		array[i] = oldArray[i];
-	array[countCells] = stoi(str);
-	delete[] oldArray;
+	array.push_back(stoi(str));
 	return array;
 }
 
 //TODO : handling exceptions
-void parseCsvDate(Traveler* Paths)
+void parseCsvDate(std::vector<Traveler>& Travelers)
 {
 	//Parse structure .csv like int(travel number), int(count points),int(points x)...int(points y).
 
-	int countParsedPaths = 0;
-	int* pointsX;
-	int* pointsY;
-	int* parsedValues;
+	std::vector<int> pointsX;
+	std::vector<int> pointsY;
+	std::vector<int> parsedValues;
 	int countPoints;
 	std::string line;
+	Traveler traveler;
 
 	std::ifstream in(fileCsv);
 	if (in.is_open())
@@ -73,21 +59,18 @@ void parseCsvDate(Traveler* Paths)
 		while (getline(in, line))
 		{
 			parsedValues = parseCsvValues(line, ",");
-			Paths[countParsedPaths].setTravelNumber(parsedValues[0]);
-
+			traveler.setTravelNumber(parsedValues[0]);
 			countPoints = parsedValues[1];
-			pointsX = new int[countPoints];
-			pointsY = new int[countPoints];
 			for (int i = 0; i < countPoints; i++)
 			{
-				pointsX[i] = parsedValues[2 + i];
-				pointsY[i] = parsedValues[2 + countPoints + i];
+				pointsX.push_back(parsedValues[2 + i]);
+				pointsY.push_back(parsedValues[2 + countPoints + i]);
 			}
-			Paths[countParsedPaths].setPointArrayX(pointsX, countPoints);
-			Paths[countParsedPaths].setPointArrayY(pointsY, countPoints);
-			countParsedPaths++;
-
-			delete[] parsedValues;
+			traveler.setPointArrayX(pointsX);
+			traveler.setPointArrayY(pointsY);
+			Travelers.push_back(traveler);
+			pointsX.clear();
+			pointsY.clear();
 		}
 	}
 	else {
@@ -97,7 +80,7 @@ void parseCsvDate(Traveler* Paths)
 }
 
 //TODO : handling exceptions
-void parseJsonDate(Traveler* Paths, int amountPaths)
+void parseJsonDate(std::vector<Traveler>& Travelers)
 {
 	//THIS function works with the massive received after csv parsing.
 
@@ -111,22 +94,22 @@ void parseJsonDate(Traveler* Paths, int amountPaths)
 			if (line.find("travelNumber") != std::string::npos)
 			{
 				travelerNumber = stoi(parseJsonValue(line));
-				for (int i = 0; i < amountPaths; i++)
+				for (int i = 0; i < Travelers.size(); i++)
 				{
-					if (Paths[i].getTravelNumber() == travelerNumber)
+					if (Travelers[i].getTravelNumber() == travelerNumber)
 					{
 						getline(in, line);
-						Paths[i].setTravelTime(stoi(parseJsonValue(line)));
+						Travelers[i].setTravelTime(stoi(parseJsonValue(line)));
 						getline(in, line);
-						Paths[i].setStartTime(stoi(parseJsonValue(line)));
+						Travelers[i].setStartTime(stoi(parseJsonValue(line)));
 						getline(in, line);
-						Paths[i].setEndTime(stoi(parseJsonValue(line)));
+						Travelers[i].setEndTime(stoi(parseJsonValue(line)));
 						getline(in, line);
-						Paths[i].setCost(stof(parseJsonValue(line)));
+						Travelers[i].setCost(stof(parseJsonValue(line)));
 						getline(in, line);
-						Paths[i].setLengthWay(stof(parseJsonValue(line)));
+						Travelers[i].setLengthWay(stof(parseJsonValue(line)));
 						getline(in, line);
-						Paths[i].setOwner(parseJsonValue(line, true));
+						Travelers[i].setOwner(parseJsonValue(line, true));
 					}
 				}
 			}
@@ -139,8 +122,9 @@ void parseJsonDate(Traveler* Paths, int amountPaths)
 	in.close();
 }
 
-void getTravelersDate(Traveler* Travelers, int amountTravelers)
+//TODO : handling exceptions
+void getTravelersDate(std::vector<Traveler>& Travelers)
 {
 	parseCsvDate(Travelers);
-	parseJsonDate(Travelers, amountTravelers);
+	parseJsonDate(Travelers);
 }

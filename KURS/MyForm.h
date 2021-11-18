@@ -9,8 +9,10 @@
 #include <windows.h>; 
 #include <chrono>;
 #include "Traveler.h";
-#include "dateloader.h";
+#include <vector>
 #include <sstream>;
+#include "dateloader.h";
+
 int CounterForTravels = 0;
 
 
@@ -214,8 +216,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)
 {
 	
-	Traveler* Travelers = new Traveler[19];
-	getTravelersDate(Travelers, 19);
+	std::vector<Traveler> Travelers;
+	getTravelersDate(Travelers);
 
 	buttons = gcnew array<Button^>(19); //Button array
 
@@ -240,20 +242,15 @@ private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e
 		buttons[iterator] = btn;
 	}
 	
-	
-	for (int i = 0; i < 19; i++)
+	std::vector<int> A;
+	std::vector<int> B;
+	for (int i = 0; i < Travelers.size(); i++)
 	{		
-		int* A = new int[Travelers[i].getCountPoints()];
-			A= Travelers[i].getPointArrayX();
-			int* B = new int[Travelers[i].getCountPoints()];
+		A= Travelers[i].getPointArrayX();
 		B = Travelers[i].getPointArrayY();
 		this->buttons[i]->Location = Drawing::Point(A[0],B[0]);
-		delete[] A;
-		delete[] B;
 
-	}
-		delete[] Travelers;
-		
+	}		
 }
 private: System::Void MyForm_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e)
  {

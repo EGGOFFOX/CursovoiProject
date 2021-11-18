@@ -1,14 +1,14 @@
 #pragma once
+#include <vector>;
 #include <string>;
 
 class Traveler
 {
 private:
-
 	int countPoints_;
 	int travelNumber_;
-	int* pointArrayX_;
-	int* pointArrayY_;
+	std::vector<int> pointArrayX_;
+	std::vector<int> pointArrayY_;
 	int startTime_;
 	int endTime_;
 	int travelTime_;
@@ -17,8 +17,8 @@ private:
 	std::string owner_;
 public:
 	void setTravelNumber(int number);
-	void setPointArrayX(int* pointArray, int count);
-	void setPointArrayY(int* pointArray, int count);
+	void setPointArrayX(std::vector<int> pointArray);
+	void setPointArrayY(std::vector<int> pointArray);
 	void setTravelTime(int time);
 	void setStartTime(int time);
 	void setEndTime(int time);
@@ -27,8 +27,8 @@ public:
 	void setOwner(std::string str);
 	int getCountPoints();
 	int getTravelNumber();
-	int* getPointArrayX();
-	int* getPointArrayY();
+	std::vector<int> Traveler::getPointArrayX();
+	std::vector<int> Traveler::getPointArrayY();
 	int getTravelTime();
 	int getEndTime();
 	int getStartTime();
