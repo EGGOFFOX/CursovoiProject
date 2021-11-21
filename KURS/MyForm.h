@@ -226,9 +226,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		std::vector<int> Ypoints = Travelers[i].getPointArrayY();
 		StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
 		this->buttons[i]->Location = Drawing::Point(stop.X, stop.Y);
-		std::cout <<"Êíîïêà " << i << std::endl;
-		std::cout << this->buttons[i]->Location.X << std::endl;
-		std::cout << this->buttons[i]->Location.Y << std::endl;
 	}
 	time_t now = time(0);
 	tm *ltm = localtime(&now);

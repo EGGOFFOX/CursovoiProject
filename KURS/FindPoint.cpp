@@ -26,10 +26,11 @@ StopInfo PointFinder::getPoint()
     int countCompletedStopsInCurrentCircle;
     int minutesToNextStop;
     StopInfo Stop;
+
     if (currentTimeInMinutes < startTime_ || currentTimeInMinutes > endTime_) {
         Stop.X = pointArrayX_[0];
         Stop.Y = pointArrayY_[0];
-        //TODO :: minutesToNextStop;
+        Stop.minutesToNextPoint = intervalStops_;
     }
     else
     {
