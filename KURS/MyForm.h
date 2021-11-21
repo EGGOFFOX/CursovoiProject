@@ -12,9 +12,10 @@
 #include <vector>
 #include <sstream>;
 #include "dateloader.h";
-
+#include "FindPoint.h";
+#include "time.h";
+#include <ctime>;
 int CounterForTravels = 0;
-
 
 namespace KURS {
 
@@ -34,9 +35,7 @@ namespace KURS {
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+			
 		}
 
 	protected:
@@ -80,6 +79,12 @@ namespace KURS {
 		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
 		/// содержимое этого метода с помощью редактора кода.
 		/// </summary>
+		int PointReturner(int start, int end, int interval, std::vector<int> XYS)
+		{
+			PointFinder pointer(interval, start, end, XYS);
+			int point = pointer.getPoint();
+			return point;
+		}
 
 		void InitializeComponent(void)
 		{
@@ -206,6 +211,21 @@ namespace KURS {
 			
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
 {	
+	std::vector<Traveler> Travelers;
+	getTravelersDate(Travelers);
+	for (int i = 0; i < 19; i++)
+	{
+		int interval=Travelers[i].getTravelTime(), endtime=Travelers[i].getEndTime(), starttime=Travelers[i].getStartTime();
+		std::vector<int> XS=Travelers[i].getPointArrayX();
+		std::vector<int> YS=Travelers[i].getPointArrayY();
+		int X_P = PointReturner(starttime,endtime,interval,XS);
+		int Y_P = PointReturner(starttime, endtime, interval, YS);
+		this->buttons[i]->Location = Drawing::Point(X_P, Y_P);
+	}
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+	
+	this->button1->Text = ltm->tm_hour.ToString();
 }
 		
 
@@ -258,3 +278,4 @@ private: System::Void MyForm_FormClosing(System::Object^  sender, System::Window
 }
 };
 }
+

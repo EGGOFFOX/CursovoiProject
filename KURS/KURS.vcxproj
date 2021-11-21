@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FINDER.cpp" />
+    <ClCompile Include="FindPoint.cpp" />
     <ClCompile Include="HELP.cpp" />
     <ClCompile Include="INF.cpp" />
     <ClCompile Include="March.cpp" />
@@ -146,6 +147,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="dateloader.h" />
+    <ClInclude Include="FindPoint.h" />
     <ClInclude Include="HELP.h">
       <FileType>CppForm</FileType>
     </ClInclude>

@@ -75,7 +75,8 @@ namespace KURS {
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->Size = System::Drawing::Size(258, 75);
 			this->richTextBox1->TabIndex = 1;
-			this->richTextBox1->Text = L"";
+			this->richTextBox1->Text = L"Розробники: студенти групи КНТ-110.\nВиноградов М.М.\nБондаренко М.Д.\nШанін К.А.\nЯк"
+				L"ушкін М.С\n";
 			// 
 			// richTextBox2
 			// 

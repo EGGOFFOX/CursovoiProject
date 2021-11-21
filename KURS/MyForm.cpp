@@ -5,6 +5,7 @@
 #include "March.h";
 #include "Traveler.h";
 #include "dateloader.h";
+#include "FindPoint.h";
 #include <iostream>
 #include <fstream>
 #include <string>
