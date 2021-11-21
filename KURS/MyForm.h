@@ -79,12 +79,6 @@ namespace KURS {
 		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
 		/// содержимое этого метода с помощью редактора кода.
 		/// </summary>
-		int PointReturner(int start, int end, int interval, std::vector<int> XYS)
-		{
-			PointFinder pointer(interval, start, end, XYS);
-			int point = pointer.getPoint();
-			return point;
-		}
 
 		void InitializeComponent(void)
 		{
@@ -208,19 +202,33 @@ namespace KURS {
 		show_help.ShowDialog();
 	}
 			
-			
+		   StopInfo PointReturner(int interval,int start, int end,
+			                      std::vector<int> Xpoints, std::vector<int> Ypoints)
+		   {
+			   PointFinder pointer(interval, start, end, Xpoints, Ypoints);
+			   StopInfo stop = pointer.getPoint();
+			   return stop;
+		   }
+
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
 {	
 	std::vector<Traveler> Travelers;
 	getTravelersDate(Travelers);
+	int interval;
+	int	endTime;
+	int startTime;
 	for (int i = 0; i < 19; i++)
 	{
-		int interval=Travelers[i].getTravelTime(), endtime=Travelers[i].getEndTime(), starttime=Travelers[i].getStartTime();
-		std::vector<int> XS=Travelers[i].getPointArrayX();
-		std::vector<int> YS=Travelers[i].getPointArrayY();
-		int X_P = PointReturner(starttime,endtime,interval,XS);
-		int Y_P = PointReturner(starttime, endtime, interval, YS);
-		this->buttons[i]->Location = Drawing::Point(X_P, Y_P);
+		interval = Travelers[i].getIntervalStops();
+	    endTime = Travelers[i].getEndTime();
+		startTime = Travelers[i].getStartTime();
+		std::vector<int> Xpoints = Travelers[i].getPointArrayX();
+		std::vector<int> Ypoints = Travelers[i].getPointArrayY();
+		StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
+		this->buttons[i]->Location = Drawing::Point(stop.X, stop.Y);
+		std::cout <<" нопка " << i << std::endl;
+		std::cout << this->buttons[i]->Location.X << std::endl;
+		std::cout << this->buttons[i]->Location.Y << std::endl;
 	}
 	time_t now = time(0);
 	tm *ltm = localtime(&now);

@@ -99,7 +99,7 @@ void parseJsonDate(std::vector<Traveler>& Travelers)
 					if (Travelers[i].getTravelNumber() == travelerNumber)
 					{
 						getline(in, line);
-						Travelers[i].setTravelTime(stoi(parseJsonValue(line)));
+						Travelers[i].setIntervalStops(stoi(parseJsonValue(line)));
 						getline(in, line);
 						Travelers[i].setStartTime(stoi(parseJsonValue(line)));
 						getline(in, line);

@@ -11,7 +11,7 @@ private:
 	std::vector<int> pointArrayY_;
 	int startTime_;
 	int endTime_;
-	int travelTime_;
+	int intervalStops_;
 	float cost_;
 	float lengthWay_;
 	std::string owner_;
@@ -19,7 +19,7 @@ public:
 	void setTravelNumber(int number);
 	void setPointArrayX(std::vector<int> pointArray);
 	void setPointArrayY(std::vector<int> pointArray);
-	void setTravelTime(int time);
+	void setIntervalStops(int time);
 	void setStartTime(int time);
 	void setEndTime(int time);
 	void setCost(float cost);
@@ -29,7 +29,7 @@ public:
 	int getTravelNumber();
 	std::vector<int> Traveler::getPointArrayX();
 	std::vector<int> Traveler::getPointArrayY();
-	int getTravelTime();
+	int getIntervalStops();
 	int getEndTime();
 	int getStartTime();
 	float getCost();

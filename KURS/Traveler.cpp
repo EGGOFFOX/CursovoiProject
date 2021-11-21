@@ -18,10 +18,10 @@
 		countPoints_ = pointArray.size();
 		pointArrayY_ = pointArray;
 	}
-	void Traveler::setTravelTime(int time) 
+	void Traveler::setIntervalStops(int time) 
 	{ 
 		if (time > 0)
-			travelTime_ = time; 
+			intervalStops_ = time;
 	}
 	void Traveler::setStartTime(int time) 
 	{ 
@@ -57,7 +57,7 @@
 	{
 		return pointArrayY_;
 	}
-	int Traveler::getTravelTime() { return travelTime_; }
+	int Traveler::getIntervalStops() { return intervalStops_; }
 	int Traveler::getEndTime() { return endTime_; }
 	int Traveler::getStartTime() { return startTime_; }
 	float Traveler::getCost() { return cost_; }
@@ -69,7 +69,7 @@
 		endTime_ = 0;
 		travelNumber_ = -1;
 		countPoints_ = 0;
-		travelTime_ = 0;
+		intervalStops_ = 0;
 	}
 	Traveler::~Traveler()
 	{

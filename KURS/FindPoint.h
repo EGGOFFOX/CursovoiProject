@@ -2,26 +2,24 @@
 #include <vector>;
 #include <string>;
 
+struct StopInfo
+{
+	int X;
+	int Y;
+	int minutesToNextPoint;
+};
+
 class PointFinder
 {
 private:
-	int count;
-	std::vector<int> XY_Array;
-	
-	int interval;
-	int s_time;
-	int end_time;
+	int countPoints_;
+	std::vector<int> pointArrayX_;
+	std::vector<int> pointArrayY_;
+	int intervalStops_;
+	int startTime_;
+	int endTime_;
 public:
-	void setXY(std::vector<int> pointArray);
-	void setInterval(int time);
-	void setS_time(int time);
-	void setEnd_time(int time);
-	/*std::vector<int> PointFinder::getArrayX();
-	int getinterval();
-	int gets_time();
-	int getend_time();
-	*/
-	PointFinder(int interv,int start,int end, std::vector<int> pointArrayXY);
-	int getPoint();
-//	~PointFinder();
+	PointFinder(int interval,int start,int end, std::vector<int> pointArrayX,
+		        std::vector<int> pointArrayY);
+	StopInfo getPoint();
 };
