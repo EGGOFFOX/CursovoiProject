@@ -72,5 +72,6 @@ int PointFinder::getPoint()
 			if(end_minut<=minut)	return XY_Array[0];
 		}
 		if (ostal > count) ostal = count;
+		if (ostal < 0) ostal = 0;
 		return XY_Array[ostal];
 }
