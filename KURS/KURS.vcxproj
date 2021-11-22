@@ -141,6 +141,7 @@
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="dateloader.cpp" />
     <ClCompile Include="Traveler.cpp" />
+    <ClCompile Include="WORKEXCEP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FINDER.h">
@@ -161,6 +162,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Traveler.h" />
+    <ClInclude Include="WORKEXCEP.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FINDER.resx">
