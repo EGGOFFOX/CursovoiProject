@@ -1,4 +1,4 @@
-{
+﻿{
   "information": [
     {
       "travelNumber": 19,
@@ -7,7 +7,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 9.28,
-      "OOO": "ОАО \"ЗАТП 12329\""
+      "OOO": "OAO ZATP 12329""
     },
     {
       "travelNumber": 30,
@@ -16,7 +16,7 @@
       "endTime": 1170,
       "cost": 8,
       "lengthWay": 6.59,
-      "OOO": "ООО \"ТК \" Гранд Авто\""
+      "OOO": "OOO TK Grand Auto""
     },
     {
       "travelNumber": 36,
@@ -25,7 +25,7 @@
       "endTime": 1320,
       "cost": 9,
       "lengthWay": 16.51,
-      "OOO": "ООО \"СИЧ Ал'янс ГРУПП\""
+      "OOO": "OOO SICH Alliance GRUPP""
     },
     {
       "travelNumber": 40,
@@ -34,7 +34,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 15.37,
-      "OOO": "ООО \"Пригородные сообщения\""
+      "OOO": "OOO Prigorodnie soobsheniya""
     },
     {
       "travelNumber": 46,
@@ -43,7 +43,7 @@
       "endTime": 1260,
       "cost": 8,
       "lengthWay": 25.78,
-      "OOO": "ООО \"Профтакси 1\""
+      "OOO": "ООО Proftaxi 1""
     },
     {
       "travelNumber": 55,
@@ -52,7 +52,7 @@
       "endTime": 1260,
       "cost": 9,
       "lengthWay": 23.25,
-      "OOO": "ОАО \"Автопарк\""
+      "OOO": "ОАО Autopark""
     },
     {
       "travelNumber": 61,
@@ -61,7 +61,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 24.04,
-      "OOO": "ООО \"Запорізька автотранспортна компанія\""
+      "OOO": "ООО Zaporizka autotransportna companiya""
     },
     {
       "travelNumber": 62,
@@ -70,7 +70,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 14.03,
-      "OOO": "ООО \"Альфа транс\""
+      "OOO": "ООО Alpha trans""
     },
     {
       "travelNumber": 63,
@@ -79,7 +79,7 @@
       "endTime": 1200,
       "cost": 8,
       "lengthWay": 24.64,
-      "OOO": "ООО \"Транспортна компанія \"Спрінт Авто\""
+      "OOO": "ООО Transportna companiya Sprint Auto""
     },
     {
       "travelNumber": 64,
@@ -88,7 +88,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 10.46,
-      "OOO": "ОАО \"ЗАТП 12329\""
+      "OOO": "OAO ZATP 12329""
     },
     {
       "travelNumber": 69,
@@ -97,7 +97,7 @@
       "endTime": 1210,
       "cost": 8,
       "lengthWay": 18.94,
-      "OOO": "ЧП \"Микитенко М.О.\""
+      "OOO": "CP Mykytenko M.O.""
     },
     {
       "travelNumber": 75,
@@ -106,7 +106,7 @@
       "endTime": 1290,
       "cost": 8,
       "lengthWay": 23.19,
-      "OOO": "ООО \"Запорожградтранс\""
+      "OOO": "OOO Zaporozhgradtrans""
     },
     {
       "travelNumber": 76,
@@ -115,7 +115,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 30.02,
-      "OOO": "ООО \"Автопростір Запоріжжя\""
+      "OOO": "OOO Autoprostir Zaporizhya"
     },
     {
       "travelNumber": 80,
@@ -124,7 +124,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 15.79,
-      "OOO": "ООО \"Ал'янс Авто\""
+      "OOO": "OOO Alliance Auto"
     },
     {
       "travelNumber": 81,
@@ -133,7 +133,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 20.85,
-      "OOO": "ООО \"Юністар-Авто\""
+      "OOO": "OOO Unistar-Auto""
     },
     {
       "travelNumber": 84,
@@ -142,7 +142,7 @@
       "endTime": 1380,
       "cost": 8,
       "lengthWay": 17.83,
-      "OOO": "ООО \"Ал'янс Авто\""
+      "OOO": "OOO Alliance Auto""
     },
     {
       "travelNumber": 88,
@@ -151,7 +151,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 20.27,
-      "OOO": "ООО \"Пригородные сообщения\""
+      "OOO": "OOO Prygorodnie soobsheniya""
     },
     {
       "travelNumber": 89,
@@ -160,7 +160,7 @@
       "endTime": 1330,
       "cost": 8,
       "lengthWay": 15.83,
-      "OOO": "ОАО \"ЗАТП 12329\""
+      "OOO": "OAO ZATP 12329""
     },
     {
       "travelNumber": 93,
@@ -169,7 +169,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 17.93,
-      "OOO": "ЧП \"Ефименко О.И.\""
+      "OOO": "CP Efimenko O.I.""
     }
   ]
 }

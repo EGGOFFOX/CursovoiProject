@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>;
 #include <string>;
-
 class Traveler
 {
 private:
@@ -15,6 +14,7 @@ private:
 	float cost_;
 	float lengthWay_;
 	std::string owner_;
+	bool Enable_view;
 public:
 	void setTravelNumber(int number);
 	void setPointArrayX(std::vector<int> pointArray);
@@ -25,6 +25,7 @@ public:
 	void setCost(float cost);
 	void setLengthWay(float length);
 	void setOwner(std::string str);
+	void setView(bool view);
 	int getCountPoints();
 	int getTravelNumber();
 	std::vector<int> Traveler::getPointArrayX();
@@ -32,6 +33,7 @@ public:
 	int getIntervalStops();
 	int getEndTime();
 	int getStartTime();
+	bool getEnable_view();
 	float getCost();
 	float getLengthWay();
 	std::string getOwner();

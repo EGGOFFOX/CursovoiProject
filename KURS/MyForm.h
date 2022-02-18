@@ -73,7 +73,6 @@ namespace KURS {
 		/// ќб€зательна€ переменна€ конструктора.
 		/// </summary>
 		System::ComponentModel::Container ^components;
-
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
@@ -181,15 +180,28 @@ namespace KURS {
 
 		}
 #pragma endregion
+		public:FINDER^ show_find;
+			   
+			 
 	private: System::Void finder_button_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
-		FINDER show_find;
-		show_find.ShowDialog();
+		show_find = gcnew FINDER;
+		show_find->Show(this);
+		this->show_find->find_button->Click += gcnew EventHandler(this, &MyForm::show_find_Closed);
+
 	}
+			   private:System::Void MyForm::show_find_Closed(Object^ sender, EventArgs^ e)
+			   {
+				   System::String^ a = show_find->num_to_find->Text;
+				  
+				   Enable_choosed(a);
+				   
+			   }
 	private: System::Void INF_button_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		INF show_inf;
 		show_inf.ShowDialog();
+
 	}
 	private: System::Void march_button_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
@@ -219,6 +231,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	int startTime;
 	for (int i = 0; i < 19; i++)
 	{
+		Travelers[i].setView(true);
 		interval = Travelers[i].getIntervalStops();
 	    endTime = Travelers[i].getEndTime();
 		startTime = Travelers[i].getStartTime();
@@ -230,14 +243,45 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
 	
-	this->button1->Text = ltm->tm_hour.ToString();
+	
 }
 		
 
 		 array<Button^>^ buttons; //Buttons array
 
-		
+		public:  System::String^ vwd;
+public: void Enable_choosed(System::String^ a)
+{
 	
+	//System::String^ a = show_find.tp();
+	std::vector<Traveler> Travelers;
+	getTravelersDate(Travelers);
+	int interval;
+	int	endTime;
+	int startTime;
+	for (int j = 0; j < 19; j++)
+	{
+		Travelers[j].setView(false);
+		this->buttons[j]->Visible == false;
+		this->buttons[j]->Location = Drawing::Point(0,0);
+	}
+	for (int j = 0; j < 19; j++)
+	{
+		System::String^ num = Travelers[j].getTravelNumber().ToString();
+		if (a == num)
+		{
+			this->buttons[j]->Visible = true;
+			interval = Travelers[j].getIntervalStops();
+			endTime = Travelers[j].getEndTime();
+			startTime = Travelers[j].getStartTime();
+			std::vector<int> Xpoints = Travelers[j].getPointArrayX();
+			std::vector<int> Ypoints = Travelers[j].getPointArrayY();
+			StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
+			this->buttons[j]->Location = Drawing::Point(stop.X, stop.Y);
+		}
+
+	}
+}
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)
 {
 	

@@ -33,6 +33,10 @@
 		if(time > 0)
 			endTime_ = time; 
 	}
+	void Traveler::setView(bool view)
+	{
+		Enable_view = view;
+	}
 	void Traveler::setCost(float cost) 
 	{ 
 		if(cost > 0)
@@ -62,6 +66,7 @@
 	int Traveler::getStartTime() { return startTime_; }
 	float Traveler::getCost() { return cost_; }
 	float Traveler::getLengthWay() { return lengthWay_; }
+	bool Traveler::getEnable_view() { return Enable_view; }
 	std::string Traveler::getOwner() { return owner_; }
 	Traveler::Traveler()
 	{

@@ -1,5 +1,4 @@
 #pragma once
-
 namespace KURS {
 
 	using namespace System;
@@ -34,10 +33,12 @@ namespace KURS {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^  num_to_find;
+	public: System::Windows::Forms::TextBox^  num_to_find;
 	protected:
 	private: System::Windows::Forms::RichTextBox^  rich_find;
-	private: System::Windows::Forms::Button^  find_button;
+	//private: System::Windows::Forms::Button^  find_button;
+
+public: System::Windows::Forms::Button^  find_button;
 	private: System::Windows::Forms::Button^  button2;
 
 	private:
@@ -83,6 +84,7 @@ namespace KURS {
 			this->find_button->TabIndex = 2;
 			this->find_button->Text = L"ÂÈÁÐÀÒÈ";
 			this->find_button->UseVisualStyleBackColor = true;
+		//	this->find_button->Click += gcnew System::EventHandler(this, &FINDER::find_button_Click);
 			// 
 			// button2
 			// 
@@ -110,9 +112,15 @@ namespace KURS {
 
 		}
 #pragma endregion
+	public: System::String^ tmp;
+
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		Close();
 	}
-	};
+			
+	public: System::String^ tp() { return tmp; };
+	
+ 
+};
 }

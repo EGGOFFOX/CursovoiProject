@@ -1,5 +1,18 @@
 #pragma once
 
+#include "INF.h";
+#include "FINDER.h";
+#include "HELP.h";
+#include "March.h";
+#include <stdlib.h>
+#include <iostream>;
+#include <windows.h>; 
+#include <chrono>;
+#include "Traveler.h";
+#include <vector>
+#include <sstream>;
+#include "dateloader.h";
+#include "FindPoint.h";
 namespace KURS {
 
 	using namespace System;
@@ -64,6 +77,7 @@ namespace KURS {
 			this->text_to_inf->Name = L"text_to_inf";
 			this->text_to_inf->Size = System::Drawing::Size(370, 22);
 			this->text_to_inf->TabIndex = 0;
+			this->text_to_inf->TextChanged += gcnew System::EventHandler(this, &INF::text_to_inf_TextChanged);
 			// 
 			// rich_inf
 			// 
@@ -91,17 +105,47 @@ namespace KURS {
 			this->Controls->Add(this->Back_button_inf);
 			this->Controls->Add(this->rich_inf);
 			this->Controls->Add(this->text_to_inf);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"INF";
 			this->Text = L"Інформація";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
-#pragma endregion
+
 	
 	private: System::Void Back_button_inf_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		Close();
+	}
+	private: System::Void text_to_inf_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		this->rich_inf->Text = "";
+		std::vector<Traveler> Travelers;
+		getTravelersDate(Travelers);
+		for (int i = 0; i < 19; i++)
+		{
+			std::stringstream converter;
+			int a = Travelers[i].getTravelNumber();
+			converter << a;
+			System::String^ num=Travelers[i].getTravelNumber().ToString();
+
+			System::String^ conv;
+			conv=text_to_inf->Text;
+
+			if (num == conv)
+			{
+				std::string a = Travelers[i].getOwner();
+				System::String^ a1 = gcnew String( a.data());
+				this->rich_inf->Text += Travelers[i].getTravelNumber().ToString();
+				this->rich_inf->Text += "Перевізник:\" "+a1+"\"; ";
+				this->rich_inf->Text += Travelers[i].getLengthWay()+" км; вартість: ";
+				this->rich_inf->Text += Travelers[i].getCost() + " гривень, інтервал ходу становить ";
+				this->rich_inf->Text += Travelers[i].getIntervalStops() + " хвилин.";
+
+			}
+		}
 	}
 	};
 }
