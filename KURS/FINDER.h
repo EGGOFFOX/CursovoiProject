@@ -119,7 +119,6 @@ public: System::Windows::Forms::Button^  find_button;
 		Close();
 	}
 			
-	public: System::String^ tp() { return tmp; };
 	
  
 };

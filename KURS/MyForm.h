@@ -253,7 +253,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 public: void Enable_choosed(System::String^ a)
 {
 	
-	//System::String^ a = show_find.tp();
 	std::vector<Traveler> Travelers;
 	getTravelersDate(Travelers);
 	int interval;
