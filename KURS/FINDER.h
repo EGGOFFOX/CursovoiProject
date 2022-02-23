@@ -35,7 +35,7 @@ namespace KURS {
 		}
 	public: System::Windows::Forms::TextBox^  num_to_find;
 	protected:
-	private: System::Windows::Forms::RichTextBox^  rich_find;
+
 	//private: System::Windows::Forms::Button^  find_button;
 
 public: System::Windows::Forms::Button^  find_button;
@@ -55,7 +55,6 @@ public: System::Windows::Forms::Button^  find_button;
 		void InitializeComponent(void)
 		{
 			this->num_to_find = (gcnew System::Windows::Forms::TextBox());
-			this->rich_find = (gcnew System::Windows::Forms::RichTextBox());
 			this->find_button = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -68,27 +67,18 @@ public: System::Windows::Forms::Button^  find_button;
 			this->num_to_find->TabIndex = 0;
 			this->num_to_find->Text = L"ÍÎÌÅÐ ÌÀÐØÐÓÒÓ";
 			// 
-			// rich_find
-			// 
-			this->rich_find->Location = System::Drawing::Point(13, 42);
-			this->rich_find->Name = L"rich_find";
-			this->rich_find->Size = System::Drawing::Size(270, 171);
-			this->rich_find->TabIndex = 1;
-			this->rich_find->Text = L"ÐÅÇÓËÜÒÀÒÈ ÏÎØÓÊÓ";
-			// 
 			// find_button
 			// 
-			this->find_button->Location = System::Drawing::Point(13, 220);
+			this->find_button->Location = System::Drawing::Point(12, 41);
 			this->find_button->Name = L"find_button";
 			this->find_button->Size = System::Drawing::Size(270, 47);
 			this->find_button->TabIndex = 2;
 			this->find_button->Text = L"ÂÈÁÐÀÒÈ";
 			this->find_button->UseVisualStyleBackColor = true;
-		//	this->find_button->Click += gcnew System::EventHandler(this, &FINDER::find_button_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(13, 274);
+			this->button2->Location = System::Drawing::Point(12, 95);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(270, 65);
 			this->button2->TabIndex = 3;
@@ -100,11 +90,13 @@ public: System::Windows::Forms::Button^  find_button;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(295, 351);
+			this->ClientSize = System::Drawing::Size(295, 166);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->find_button);
-			this->Controls->Add(this->rich_find);
 			this->Controls->Add(this->num_to_find);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"FINDER";
 			this->Text = L"Ïîøóê";
 			this->ResumeLayout(false);

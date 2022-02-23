@@ -15,6 +15,7 @@
 #include "FindPoint.h";
 #include "time.h";
 #include <ctime>;
+
 int CounterForTravels = 0;
 
 namespace KURS {
@@ -156,7 +157,7 @@ namespace KURS {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(225, 48);
 			this->button1->TabIndex = 8;
-			this->button1->Text = L"VIEW";
+			this->button1->Text = L"Â²ÄÎÁÐÀÇÈÒÈ";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -164,13 +165,16 @@ namespace KURS {
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::SystemColors::GrayText;
-			this->ClientSize = System::Drawing::Size(1086, 615);
+			this->ClientSize = System::Drawing::Size(1086, 593);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Help);
 			this->Controls->Add(this->INF_button);
 			this->Controls->Add(this->march_button);
 			this->Controls->Add(this->finder_button);
 			this->Controls->Add(this->pictureBox1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"MyForm";
 			this->Text = L"Ïðîñïåêò Ñîáîðíèé";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MyForm::MyForm_FormClosing);
@@ -231,7 +235,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	int startTime;
 	for (int i = 0; i < 19; i++)
 	{
-		Travelers[i].setView(true);
 		interval = Travelers[i].getIntervalStops();
 	    endTime = Travelers[i].getEndTime();
 		startTime = Travelers[i].getStartTime();
@@ -260,16 +263,9 @@ public: void Enable_choosed(System::String^ a)
 	int startTime;
 	for (int j = 0; j < 19; j++)
 	{
-		Travelers[j].setView(false);
-		this->buttons[j]->Visible == false;
-		this->buttons[j]->Location = Drawing::Point(0,0);
-	}
-	for (int j = 0; j < 19; j++)
-	{
 		System::String^ num = Travelers[j].getTravelNumber().ToString();
 		if (a == num)
 		{
-			this->buttons[j]->Visible = true;
 			interval = Travelers[j].getIntervalStops();
 			endTime = Travelers[j].getEndTime();
 			startTime = Travelers[j].getStartTime();
@@ -277,6 +273,8 @@ public: void Enable_choosed(System::String^ a)
 			std::vector<int> Ypoints = Travelers[j].getPointArrayY();
 			StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
 			this->buttons[j]->Location = Drawing::Point(stop.X, stop.Y);
+			for(int i = 0; i < 19; i++)  this->buttons[i]->Location = Drawing::Point(stop.X, stop.Y);
+
 		}
 
 	}

@@ -133,10 +133,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Autor_Inf.cpp" />
+    <ClCompile Include="INF_HELP.cpp" />
     <ClCompile Include="FINDER.cpp" />
     <ClCompile Include="FindPoint.cpp" />
     <ClCompile Include="HELP.cpp" />
-    <ClCompile Include="INF.cpp" />
     <ClCompile Include="March.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="dateloader.cpp" />
@@ -144,6 +145,8 @@
     <ClCompile Include="WORKEXCEP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Abstraction.h" />
+    <ClInclude Include="Autor_Inf.h" />
     <ClInclude Include="FINDER.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -155,6 +158,7 @@
     <ClInclude Include="INF.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="INF_HELP.h" />
     <ClInclude Include="March.h">
       <FileType>CppForm</FileType>
     </ClInclude>

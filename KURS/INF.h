@@ -83,13 +83,13 @@ namespace KURS {
 			// 
 			this->rich_inf->Location = System::Drawing::Point(10, 48);
 			this->rich_inf->Name = L"rich_inf";
-			this->rich_inf->Size = System::Drawing::Size(370, 215);
+			this->rich_inf->Size = System::Drawing::Size(370, 92);
 			this->rich_inf->TabIndex = 1;
 			this->rich_inf->Text = L"";
 			// 
 			// Back_button_inf
 			// 
-			this->Back_button_inf->Location = System::Drawing::Point(10, 270);
+			this->Back_button_inf->Location = System::Drawing::Point(10, 146);
 			this->Back_button_inf->Name = L"Back_button_inf";
 			this->Back_button_inf->Size = System::Drawing::Size(370, 44);
 			this->Back_button_inf->TabIndex = 2;
@@ -101,7 +101,7 @@ namespace KURS {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(392, 322);
+			this->ClientSize = System::Drawing::Size(392, 195);
 			this->Controls->Add(this->Back_button_inf);
 			this->Controls->Add(this->rich_inf);
 			this->Controls->Add(this->text_to_inf);
@@ -120,8 +120,10 @@ namespace KURS {
 	{
 		Close();
 	}
+
 	private: System::Void text_to_inf_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		this->rich_inf->Text = "";
+		
+			this->rich_inf->Text = "";
 		std::vector<Traveler> Travelers;
 		getTravelersDate(Travelers);
 		for (int i = 0; i < 19; i++)
@@ -139,7 +141,7 @@ namespace KURS {
 				std::string a = Travelers[i].getOwner();
 				System::String^ a1 = gcnew String( a.data());
 				this->rich_inf->Text += Travelers[i].getTravelNumber().ToString();
-				this->rich_inf->Text += "Перевізник:\" "+a1+"\"; ";
+				this->rich_inf->Text += " Перевізник:\" "+a1+"\"; ";
 				this->rich_inf->Text += Travelers[i].getLengthWay()+" км; вартість: ";
 				this->rich_inf->Text += Travelers[i].getCost() + " гривень, інтервал ходу становить ";
 				this->rich_inf->Text += Travelers[i].getIntervalStops() + " хвилин.";
