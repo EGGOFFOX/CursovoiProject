@@ -4,15 +4,19 @@
 #include "FINDER.h";
 #include "HELP.h";
 #include "March.h";
-#include <stdlib.h>
+#include <stdlib.h>;
 #include <iostream>;
 #include <windows.h>; 
 #include <chrono>;
 #include "Traveler.h";
-#include <vector>
+#include <vector>;
 #include <sstream>;
 #include "dateloader.h";
 #include "FindPoint.h";
+#include "WORKEXCEP.h";
+#include <typeinfo>;
+
+WorkWithExceptions excep1;
 namespace KURS {
 
 	using namespace System;
@@ -33,6 +37,7 @@ namespace KURS {
 			InitializeComponent();
 			
 		}
+	public:FINDER^ show_find;
 
 	protected:
 		/// <summary>
@@ -45,7 +50,7 @@ namespace KURS {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^  text_to_inf;
+	public: System::Windows::Forms::TextBox^  text_to_inf;
 	private: System::Windows::Forms::RichTextBox^  rich_inf;
 	protected:
 
@@ -123,30 +128,69 @@ namespace KURS {
 
 	private: System::Void text_to_inf_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		
-			this->rich_inf->Text = "";
-		std::vector<Traveler> Travelers;
-		getTravelersDate(Travelers);
-		for (int i = 0; i < 19; i++)
+		try
 		{
-			std::stringstream converter;
-			int a = Travelers[i].getTravelNumber();
-			converter << a;
-			System::String^ num=Travelers[i].getTravelNumber().ToString();
-
-			System::String^ conv;
-			conv=text_to_inf->Text;
-
-			if (num == conv)
+			this->rich_inf->Text = "";
+			std::vector<Traveler> Travelers;
+			getTravelersDate(Travelers);
+			for (int i = 0; i < 19; i++)
 			{
-				std::string a = Travelers[i].getOwner();
-				System::String^ a1 = gcnew String( a.data());
-				this->rich_inf->Text += Travelers[i].getTravelNumber().ToString();
-				this->rich_inf->Text += " Перевізник:\" "+a1+"\"; ";
-				this->rich_inf->Text += Travelers[i].getLengthWay()+" км; вартість: ";
-				this->rich_inf->Text += Travelers[i].getCost() + " гривень, інтервал ходу становить ";
-				this->rich_inf->Text += Travelers[i].getIntervalStops() + " хвилин.";
-
+				std::stringstream converter;
+				int a = Travelers[i].getTravelNumber();
+				const type_info& ti_travelnumber = typeid(Travelers[i].getTravelNumber());
+				System::String^ conv;
+				conv = text_to_inf->Text;
+				int test;
+				const type_info& ti_text = typeid(test);
+				System::String^ num;
+				if(ti_travelnumber==ti_text) num = Travelers[i].getTravelNumber().ToString();
+				
+				if (num == conv)
+				{
+					std::string a = Travelers[i].getOwner();
+					System::String^ a1 = gcnew String(a.data());
+					this->rich_inf->Text += Travelers[i].getTravelNumber().ToString();
+					this->rich_inf->Text += " Перевізник:\" " + a1 + "\"; ";
+					this->rich_inf->Text += Travelers[i].getLengthWay() + " км; вартість: ";
+					this->rich_inf->Text += Travelers[i].getCost() + " гривень, інтервал ходу становить ";
+					this->rich_inf->Text += Travelers[i].getIntervalStops() + " хвилин.";
+				}
 			}
+		}
+		catch (std::length_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep1.LengthError();
+		}
+		catch (std::range_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep1.RangeError();
+		}
+		catch (std::out_of_range)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep1.OutOfRangeError();
+		}
+		catch (std::invalid_argument)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep1.InvalidArgumentError();
+		}
+		catch (std::bad_typeid)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep1.BadTypeidError();
 		}
 	}
 	};

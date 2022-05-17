@@ -21,6 +21,7 @@ namespace KURS {
 			//TODO: добавьте код конструктора
 			//
 		}
+	public:FINDER^ show_find;
 
 	protected:
 		/// <summary>

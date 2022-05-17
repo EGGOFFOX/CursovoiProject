@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Traveler.h";
-
+#include "WORKEXCEP.h";
 #include "dateloader.h";
-
+#include "FINDER.h";
 namespace KURS {
 
 	using namespace System;
@@ -26,7 +26,7 @@ namespace KURS {
 			//TODO: добавьте код конструктора
 			//
 		}
-
+	public:FINDER^ show_find;
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -101,19 +101,51 @@ namespace KURS {
 		Close();
 	}
 	private: System::Void March_Load(System::Object^  sender, System::EventArgs^  e) {
-		this->March_rich->Text = "";
-		std::vector<Traveler> Travelers;
-		getTravelersDate(Travelers);
-		for (int i = 0; i < 19; i++)
+		WorkWithExceptions excep3;
+		try
 		{
-			setlocale(LC_ALL, "ukr");
-			std::string a = Travelers[i].getOwner();
-			System::String^ a1 = gcnew String(a.data());
-			this->March_rich->Text += Travelers[i].getTravelNumber().ToString();
-			this->March_rich->Text += " Перевізник:\" " + a1 + "\"; ";
-			this->March_rich->Text += Travelers[i].getLengthWay() + " км; вартість: ";
-			this->March_rich->Text += Travelers[i].getCost() + " гривень, інтервал ходу становить ";
-			this->March_rich->Text += Travelers[i].getIntervalStops() + " хвилин.\n\n";
+			this->March_rich->Text = "";
+			std::vector<Traveler> Travelers;
+			getTravelersDate(Travelers);
+			for (int i = 0; i < 19; i++)
+			{
+				setlocale(LC_ALL, "ukr");
+				std::string a = Travelers[i].getOwner();
+				System::String^ a1 = gcnew String(a.data());
+				this->March_rich->Text += Travelers[i].getTravelNumber().ToString();
+				this->March_rich->Text += " Перевізник:\" " + a1 + "\"; ";
+				this->March_rich->Text += Travelers[i].getLengthWay() + " км; вартість: ";
+				this->March_rich->Text += Travelers[i].getCost() + " гривень, інтервал ходу становить ";
+				this->March_rich->Text += Travelers[i].getIntervalStops() + " хвилин.\n\n";
+			}
+		}
+		catch (std::length_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep3.LengthError();
+		}
+		catch (std::range_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep3.RangeError();
+		}
+		catch (std::out_of_range)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep3.OutOfRangeError();
+		}
+		catch (std::invalid_argument)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep3.InvalidArgumentError();
 		}
 	}
 	};

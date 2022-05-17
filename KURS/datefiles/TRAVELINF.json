@@ -34,7 +34,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 15.37,
-      "OOO": "OOO Prigorodnie soobsheniya""
+      "OOO": "OOO Prigorodnie soobsheniya", Oblasna likarnya : pl.Zaporizka ""
     },
     {
       "travelNumber": 46,
@@ -43,7 +43,7 @@
       "endTime": 1260,
       "cost": 8,
       "lengthWay": 25.78,
-      "OOO": "OOO Proftaxi 1""
+      "OOO": "OOO Proftaxi 1", vul. Pischana : vul. Olimpiyska ""
     },
     {
       "travelNumber": 55,
@@ -61,7 +61,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 24.04,
-      "OOO": "OOO Zaporizka autotransportna companiya""
+      "OOO": "OOO Zaporizka autotransportna companiya", Armaturnyy zavod - 4-y Pivdenyy mikrorayon ""
     },
     {
       "travelNumber": 62,
@@ -70,7 +70,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 14.03,
-      "OOO": "OOO Alpha trans""
+      "OOO": "OOO Alpha trans", 4-Y Pivdenyy mikrorayon - DK "ZALK""
     },
     {
       "travelNumber": 63,
@@ -79,7 +79,7 @@
       "endTime": 1200,
       "cost": 8,
       "lengthWay": 24.64,
-      "OOO": "OOO Transportna companiya Sprint Auto""
+      "OOO": "OOO Transportna companiya Sprint Auto", Borodynskyy rynok - vul. Yevropeyska ""
     },
     {
       "travelNumber": 64,
@@ -97,7 +97,7 @@
       "endTime": 1210,
       "cost": 8,
       "lengthWay": 18.94,
-      "OOO": "CP Mykytenko M.O.""
+      "OOO": "CP Mykytenko M.O.", pl. Zaporizka - per. Kvitkovyy ""
     },
     {
       "travelNumber": 75,
@@ -106,7 +106,7 @@
       "endTime": 1290,
       "cost": 8,
       "lengthWay": 23.19,
-      "OOO": "OOO Zaporozhgradtrans""
+      "OOO": "OOO Zaporozhgradtrans", vul. Shushenska - 4-Y Pivdenyy mikrorayon ""
     },
     {
       "travelNumber": 76,
@@ -115,7 +115,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 30.02,
-      "OOO": "OOO Autoprostir Zaporizhya"
+      "OOO": "OOO Autoprostir Zaporizhya, vul. Yevropeyska - kladovyshche svyatoho Mykolaya ""
     },
     {
       "travelNumber": 80,
@@ -124,7 +124,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 15.79,
-      "OOO": "OOO Alliance Auto"
+      "OOO": "OOO Alliance Auto, TTS "METRO" - Richnyy port ""
     },
     {
       "travelNumber": 81,
@@ -133,7 +133,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 20.85,
-      "OOO": "OOO Unistar-Auto""
+      "OOO": "OOO Unistar-Auto, vul. Tovarychna - 4-Y Pivdenyy mikrorayon ""
     },
     {
       "travelNumber": 84,
@@ -142,7 +142,7 @@
       "endTime": 1380,
       "cost": 8,
       "lengthWay": 17.83,
-      "OOO": "OOO Alliance Auto""
+      "OOO": "OOO Alliance Auto, Zaliznychnyy vokzal Zaporizhzhya-1 - M/N Borodynskyy ""
     },
     {
       "travelNumber": 88,
@@ -151,7 +151,7 @@
       "endTime": 1320,
       "cost": 8,
       "lengthWay": 20.27,
-      "OOO": "OOO Prygorodnie soobsheniya""
+      "OOO": "OOO Prygorodnie soobsheniya", 3-Y Pivdenyy mikrorayon - vul. Tovarychna ""
     },
     {
       "travelNumber": 89,
@@ -160,7 +160,7 @@
       "endTime": 1330,
       "cost": 8,
       "lengthWay": 15.83,
-      "OOO": "OAO ZATP 12329""
+      "OOO": "OAO ZATP 12329", Richnyy port - vul. Makovskoho ""
     },
     {
       "travelNumber": 93,

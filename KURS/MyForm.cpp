@@ -34,7 +34,7 @@ void main() {
 	//	std::cout << "Cost:" << Travelers[i].getCost() << std::endl;
 	//	std::cout << "Owner:" << Travelers[i].getOwner() << std::endl;
 	//}
-	
+
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	KURS::MyForm form;

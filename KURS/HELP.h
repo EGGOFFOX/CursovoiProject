@@ -3,6 +3,11 @@
 #include "Autor_Inf.h";
 #include <string.h>
 #include <cstring>
+#include "FINDER.h";
+#include "WORKEXCEP.h";
+
+
+
 namespace KURS {
 
 	using namespace System;
@@ -26,7 +31,8 @@ namespace KURS {
 			//TODO: добавьте код конструктора
 			//
 		}
-
+	
+	public:FINDER^ show_find;
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -97,14 +103,46 @@ namespace KURS {
 		}
 #pragma endregion
 	
-	private: System::Void HELP_Load(System::Object^  sender, System::EventArgs^  e) 
+	private: System::Void HELP_Load(System::Object^  sender, System::EventArgs^  e)
 	{
+		WorkWithExceptions excep2;
 		DataString Data;
 		Autor autor;
-		System::String^ a1 = gcnew String(Data.Information().data());
-		this->richTextBox2->Text += a1;
-		a1 = gcnew String(autor.Information().data());
-		this->richTextBox1->Text += a1;
+		try
+		{
+			System::String^ a1 = gcnew String(Data.Information().data());
+			this->richTextBox2->Text += a1;
+			a1 = gcnew String(autor.Information().data());
+			this->richTextBox1->Text += a1;
+		}
+		catch (std::length_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep2.LengthError();
+		}
+		catch (std::range_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep2.RangeError();
+		}
+		catch (std::out_of_range)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep2.OutOfRangeError();
+		}
+		catch (std::invalid_argument)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep2.InvalidArgumentError();
+		}
 	}
 	};
 }

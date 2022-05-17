@@ -135,10 +135,7 @@
   <ItemGroup>
     <ClCompile Include="Autor_Inf.cpp" />
     <ClCompile Include="INF_HELP.cpp" />
-    <ClCompile Include="FINDER.cpp" />
     <ClCompile Include="FindPoint.cpp" />
-    <ClCompile Include="HELP.cpp" />
-    <ClCompile Include="March.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="dateloader.cpp" />
     <ClCompile Include="Traveler.cpp" />

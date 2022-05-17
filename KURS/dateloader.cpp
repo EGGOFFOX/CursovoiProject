@@ -117,6 +117,7 @@ void parseJsonDate(std::vector<Traveler>& Travelers)
 	}
 	else 
 	{
+
 		std::cout << "The File not found" << std::endl;
 	}
 	in.close();
