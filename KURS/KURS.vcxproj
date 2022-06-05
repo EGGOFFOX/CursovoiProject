@@ -138,6 +138,7 @@
     <ClCompile Include="FindPoint.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="dateloader.cpp" />
+    <ClCompile Include="Stop.cpp" />
     <ClCompile Include="Traveler.cpp" />
     <ClCompile Include="WORKEXCEP.cpp" />
   </ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Stop.h" />
     <ClInclude Include="Traveler.h" />
     <ClInclude Include="WORKEXCEP.h" />
   </ItemGroup>

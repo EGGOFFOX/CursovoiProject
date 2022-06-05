@@ -236,7 +236,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			std::vector<int> Xpoints = Travelers[i].getPointArrayX();
 			std::vector<int> Ypoints = Travelers[i].getPointArrayY();
 			StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
-			this->buttons[i]->Location = Drawing::Point(stop.X, stop.Y);
+			this->buttons[i]->Location = Drawing::Point(stop.getX(), stop.getY());
 		}
 		time_t now = time(0);
 		tm *ltm = localtime(&now);
@@ -289,8 +289,8 @@ public: void Enable_choosed(System::String^ a)
 				std::vector<int> Xpoints = Travelers[j].getPointArrayX();
 				std::vector<int> Ypoints = Travelers[j].getPointArrayY();
 				StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
-				this->buttons[j]->Location = Drawing::Point(stop.X, stop.Y);
-				for (int i = 0; i < 19; i++)  this->buttons[i]->Location = Drawing::Point(stop.X, stop.Y);
+				this->buttons[j]->Location = Drawing::Point(stop.getX(), stop.getY());
+				for (int i = 0; i < 19; i++)  this->buttons[i]->Location = Drawing::Point(stop.getX(), stop.getY());
 
 			}
 		}

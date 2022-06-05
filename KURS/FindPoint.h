@@ -1,13 +1,8 @@
 #pragma once
 #include <vector>;
 #include <string>;
+#include "Stop.h"
 
-struct StopInfo
-{
-	int X;
-	int Y;
-	int minutesToNextPoint;
-};
 
 class PointFinder
 {

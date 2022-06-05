@@ -28,9 +28,9 @@ StopInfo PointFinder::getPoint()
     StopInfo Stop;
 
     if (currentTimeInMinutes < startTime_ || currentTimeInMinutes > endTime_) {
-        Stop.X = pointArrayX_[0];
-        Stop.Y = pointArrayY_[0];
-        Stop.minutesToNextPoint = intervalStops_;
+        Stop.setX(pointArrayX_[0]);
+        Stop.setY(pointArrayY_[0]);
+        Stop.setminutes(intervalStops_);
     }
     else
     {
@@ -38,9 +38,9 @@ StopInfo PointFinder::getPoint()
         currentCircleWorkingMinutes = workingMinutes % (intervalStops_ * countPoints_);
         countCompletedStopsInCurrentCircle = currentCircleWorkingMinutes / intervalStops_;
         minutesToNextStop = currentCircleWorkingMinutes % intervalStops_;
-        Stop.X = pointArrayX_[countCompletedStopsInCurrentCircle];
-        Stop.Y = pointArrayY_[countCompletedStopsInCurrentCircle];
-        Stop.minutesToNextPoint = minutesToNextStop;
+        Stop.setX(pointArrayX_[countCompletedStopsInCurrentCircle]);
+        Stop.setY(pointArrayY_[countCompletedStopsInCurrentCircle]);
+        Stop.setminutes(minutesToNextStop);
     }
     return Stop;
 }
