@@ -4,7 +4,7 @@
 
 class Autor : public Abstrac
 {
-public:
+private:
 	std::string Data;
 public:
 	void setData();
