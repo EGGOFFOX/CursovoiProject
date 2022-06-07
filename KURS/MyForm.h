@@ -210,7 +210,7 @@ namespace KURS {
 		show_help.ShowDialog();
 	}
 			
-		   StopInfo PointReturner(int interval,int start, int end,
+	StopInfo PointReturner(int interval,int start, int end,
 			                      std::vector<int> Xpoints, std::vector<int> Ypoints)
 		   {
 			   PointFinder pointer(interval, start, end, Xpoints, Ypoints);
@@ -267,7 +267,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	
 array<Button^>^ buttons; //Buttons array
 
-public:  System::String^ vwd;
 public: void Enable_choosed(System::String^ a)
 {
 
