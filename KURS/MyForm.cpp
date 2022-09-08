@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <sstream>;
+//#include <windows.h>
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThread]
@@ -34,7 +35,7 @@ void main() {
 	//	std::cout << "Cost:" << Travelers[i].getCost() << std::endl;
 	//	std::cout << "Owner:" << Travelers[i].getOwner() << std::endl;
 	//}
-
+	FreeConsole();
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	KURS::MyForm form;
