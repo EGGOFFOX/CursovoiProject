@@ -2,7 +2,6 @@
 #include <vector>
 #include "Traveler.h"
 
-//TODO : handling exceptions
 	void Traveler::setTravelNumber(int number) 
 	{
 		if (number > 0)

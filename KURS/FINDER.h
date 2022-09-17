@@ -8,25 +8,19 @@ namespace KURS {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// —водка дл€ FINDER
-	/// </summary>
+
 	public ref class FINDER : public System::Windows::Forms::Form
 	{
 	public:
 		FINDER(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+
 		}
 	public:FINDER^ show_find;
 
 	protected:
-		/// <summary>
-		/// ќсвободить все используемые ресурсы.
-		/// </summary>
+
 		~FINDER()
 		{
 			if (components)
@@ -37,22 +31,15 @@ namespace KURS {
 	public: System::Windows::Forms::TextBox^  num_to_find;
 	protected:
 
-	//private: System::Windows::Forms::Button^  find_button;
-
 public: System::Windows::Forms::Button^  find_button;
 	private: System::Windows::Forms::Button^  button2;
 
 	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
+
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
+
 		void InitializeComponent(void)
 		{
 			this->num_to_find = (gcnew System::Windows::Forms::TextBox());

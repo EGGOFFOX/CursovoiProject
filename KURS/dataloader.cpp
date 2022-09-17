@@ -1,16 +1,11 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include "Traveler.h"
-#include "dateloader.h"
+
+#include "dataloader.h"
 
 std::string fileJson = "datefiles/TRAVELINF.json";
 std::string fileCsv = "datefiles/POINTS.csv";
 
 
-//TODO : handling exceptions
-std::string parseJsonValue(std::string str, bool isValueString = false)
+std::string DataLoader::parseJsonValue(std::string str, bool isValueString = false)
 {
 	std::string parsedValue;
 	parsedValue = str.substr(str.find(":") + 2, str.size() - str.find(":"));
@@ -23,8 +18,7 @@ std::string parseJsonValue(std::string str, bool isValueString = false)
 	return parsedValue;
 }
 
-//TODO : handling exceptions
-std::vector<int> parseCsvValues(std::string str, std::string delimiter)
+std::vector<int> DataLoader::parseCsvValues(std::string str, std::string delimiter)
 {
 	std::vector<int> array;
 	size_t pos = 0;
@@ -41,8 +35,7 @@ std::vector<int> parseCsvValues(std::string str, std::string delimiter)
 	return array;
 }
 
-//TODO : handling exceptions
-void parseCsvDate(std::vector<Traveler>& Travelers)
+void DataLoader::parseCsvData(std::vector<Traveler>& Travelers)
 {
 	//Parse structure .csv like int(travel number), int(count points),int(points x)...int(points y).
 
@@ -79,8 +72,7 @@ void parseCsvDate(std::vector<Traveler>& Travelers)
 	in.close();
 }
 
-//TODO : handling exceptions
-void parseJsonDate(std::vector<Traveler>& Travelers)
+void DataLoader::parseJsonData(std::vector<Traveler>& Travelers)
 {
 	//THIS function works with the massive received after csv parsing.
 
@@ -123,9 +115,8 @@ void parseJsonDate(std::vector<Traveler>& Travelers)
 	in.close();
 }
 
-//TODO : handling exceptions
-void getTravelersDate(std::vector<Traveler>& Travelers)
+void DataLoader::getTravelersData(std::vector<Traveler>& Travelers)
 {
-	parseCsvDate(Travelers);
-	parseJsonDate(Travelers);
+	parseCsvData(Travelers);
+	parseJsonData(Travelers);
 }

@@ -139,7 +139,7 @@
     <ClCompile Include="INF_HELP.cpp" />
     <ClCompile Include="FindPoint.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="dateloader.cpp" />
+    <ClCompile Include="dataloader.cpp" />
     <ClCompile Include="Stop.cpp" />
     <ClCompile Include="Traveler.cpp" />
     <ClCompile Include="WORKEXCEP.cpp" />
@@ -150,7 +150,7 @@
     <ClInclude Include="FINDER.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="dateloader.h" />
+    <ClInclude Include="dataloader.h" />
     <ClInclude Include="FindPoint.h" />
     <ClInclude Include="HELP.h">
       <FileType>CppForm</FileType>

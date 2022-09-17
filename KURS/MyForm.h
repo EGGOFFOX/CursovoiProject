@@ -11,7 +11,7 @@
 #include "Traveler.h";
 #include <vector>
 #include <sstream>;
-#include "dateloader.h";
+#include "dataloader.h";
 #include "FindPoint.h";
 #include "time.h";
 #include <ctime>;
@@ -28,22 +28,17 @@ namespace KURS {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// —водка дл€ MyForm
-	/// </summary>
+	
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
-			
+
 		}
 
 	protected:
-		/// <summary>
-		/// ќсвободить все используемые ресурсы.
-		/// </summary>
 		~MyForm()
 		{
 			if (components)
@@ -60,19 +55,16 @@ namespace KURS {
 	private: System::Windows::Forms::Button^  button1;
 	public:FINDER^ show_find;
 	public:INF^ show_inf;
+	private: System::Windows::Forms::Button^  INFBUT;
+	public:
 
 	protected:
 
 	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
+		
 		System::ComponentModel::Container ^components;
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
+		
 
 		void InitializeComponent(void)
 		{
@@ -83,6 +75,7 @@ namespace KURS {
 			this->INF_button = (gcnew System::Windows::Forms::Button());
 			this->Help = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->INFBUT = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -155,11 +148,23 @@ namespace KURS {
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
+			// INFBUT
+			// 
+			this->INFBUT->Location = System::Drawing::Point(999, 565);
+			this->INFBUT->Name = L"INFBUT";
+			this->INFBUT->Size = System::Drawing::Size(75, 23);
+			this->INFBUT->TabIndex = 100;
+			this->INFBUT->Text = L"button2";
+			this->INFBUT->UseVisualStyleBackColor = true;
+			this->INFBUT->Visible = false;
+			this->INFBUT->Click += gcnew System::EventHandler(this, &MyForm::INFBUT_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::SystemColors::GrayText;
 			this->ClientSize = System::Drawing::Size(1086, 593);
+			this->Controls->Add(this->INFBUT);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Help);
 			this->Controls->Add(this->INF_button);
@@ -178,237 +183,260 @@ namespace KURS {
 
 		}
 #pragma endregion
-		    
-	private: System::Void finder_button_Click(System::Object^  sender, System::EventArgs^  e) 
+
+	private: System::Void finder_button_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		show_find = gcnew FINDER;
 		show_find->Show(this);
 		this->show_find->find_button->Click += gcnew EventHandler(this, &MyForm::show_find_Closed);
 
 	}
-			   private:System::Void MyForm::show_find_Closed(Object^ sender, EventArgs^ e)
-			   {
-				   System::String^ a = show_find->num_to_find->Text;
-				  
-				   Enable_choosed(a);
-				   
-			   }
+	private:System::Void MyForm::show_find_Closed(Object^ sender, EventArgs^ e)
+	{
+		System::String^ a = show_find->num_to_find->Text;
+
+		Enable_choosed(a);
+
+	}
 	private: System::Void INF_button_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		INF show_inf;
 		show_inf.ShowDialog();
 
 	}
-	private: System::Void march_button_Click(System::Object^  sender, System::EventArgs^  e) 
+	private: System::Void march_button_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		March show_march;
 		show_march.ShowDialog();
 	}
-	private: System::Void Help_Click(System::Object^  sender, System::EventArgs^  e) 
+	private: System::Void Help_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		HELP show_help;
 		show_help.ShowDialog();
 	}
-			
-	StopInfo PointReturner(int interval,int start, int end,
-			                      std::vector<int> Xpoints, std::vector<int> Ypoints)
-		   {
-			   PointFinder pointer(interval, start, end, Xpoints, Ypoints);
-			   StopInfo stop = pointer.getPoint();
-			   return stop;
-		   }
 
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
-{
-	std::vector<Traveler> Travelers;
-	getTravelersDate(Travelers);
-	
-	int interval;
-	int	endTime;
-	int startTime;
-	try
+			 StopInfo PointReturner(int interval, int start, int end,
+				 std::vector<int> Xpoints, std::vector<int> Ypoints)
+			 {
+				 PointFinder pointer(interval, start, end, Xpoints, Ypoints);
+				 StopInfo stop = pointer.getPoint();
+				 return stop;
+			 }
+
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e)
 	{
-		for (int i = 0; i < 19; i++)
+		DataLoader DataLoader;
+		std::vector<Traveler> Travelers;
+		DataLoader.getTravelersData(Travelers);
+
+		int interval;
+		int	endTime;
+		int startTime;
+		try
 		{
-			interval = Travelers[i].getIntervalStops();
-			endTime = Travelers[i].getEndTime();
-			startTime = Travelers[i].getStartTime();
-			std::vector<int> Xpoints = Travelers[i].getPointArrayX();
-			std::vector<int> Ypoints = Travelers[i].getPointArrayY();
-			StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
-			this->buttons[i]->Location = Drawing::Point(stop.getX(), stop.getY());
-		}
-		time_t now = time(0);
-		tm *ltm = localtime(&now);
-	}
-	catch (std::invalid_argument)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.InvalidArgumentError();
-	}
-	catch (std::range_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.RangeError();
-	}
-	catch (std::out_of_range)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.OutOfRangeError();
-	}
-	
-}
-	
-array<Button^>^ buttons; //Buttons array
-
-public: void Enable_choosed(System::String^ a)
-{
-
-	std::vector<Traveler> Travelers;
-	getTravelersDate(Travelers);
-	int interval;
-	int	endTime;
-	int startTime;
-	try
-	{
-		for (int j = 0; j < 19; j++)
-		{
-			System::String^ num = Travelers[j].getTravelNumber().ToString();
-			if (a == num)
+			for (int i = 0; i < 19; i++)
 			{
-				interval = Travelers[j].getIntervalStops();
-				endTime = Travelers[j].getEndTime();
-				startTime = Travelers[j].getStartTime();
-				std::vector<int> Xpoints = Travelers[j].getPointArrayX();
-				std::vector<int> Ypoints = Travelers[j].getPointArrayY();
+				interval = Travelers[i].getIntervalStops();
+				endTime = Travelers[i].getEndTime();
+				startTime = Travelers[i].getStartTime();
+				std::vector<int> Xpoints = Travelers[i].getPointArrayX();
+				std::vector<int> Ypoints = Travelers[i].getPointArrayY();
 				StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
-				this->buttons[j]->Location = Drawing::Point(stop.getX(), stop.getY());
-				for (int i = 0; i < 19; i++)  this->buttons[i]->Location = Drawing::Point(stop.getX(), stop.getY());
+				this->buttons[i]->Location = Drawing::Point(stop.getX(), stop.getY());
+				this->buttons[i]->Visible = true;
+			}
+			time_t now = time(0);
+			tm *ltm = localtime(&now);
+		}
+		catch (std::invalid_argument)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.InvalidArgumentError();
+		}
+		catch (std::range_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.RangeError();
+		}
+		catch (std::out_of_range)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.OutOfRangeError();
+		}
 
+	}
+
+			 array<Button^>^ buttons; //Buttons array
+
+	public: void Enable_choosed(System::String^ a)
+	{
+		DataLoader DataLoader;
+		std::vector<Traveler> Travelers;
+		DataLoader.getTravelersData(Travelers);
+		int interval;
+		int	endTime;
+		int startTime;
+		try
+		{
+			for (int j = 0; j < 19; j++)
+			{
+				System::String^ num = Travelers[j].getTravelNumber().ToString();
+				if (a == num)
+				{
+					interval = Travelers[j].getIntervalStops();
+					endTime = Travelers[j].getEndTime();
+					startTime = Travelers[j].getStartTime();
+					std::vector<int> Xpoints = Travelers[j].getPointArrayX();
+					std::vector<int> Ypoints = Travelers[j].getPointArrayY();
+					StopInfo stop = PointReturner(interval, startTime, endTime, Xpoints, Ypoints);
+					this->buttons[j]->Location = Drawing::Point(stop.getX(), stop.getY());
+					for (int i = 0; i < 19; i++)
+					{
+						if (i != j) this->buttons[i]->Visible = false;//this->buttons[i]->Location = Drawing::Point(stop.getX(), stop.getY());
+					}
+				}
 			}
 		}
-	}
-	catch (std::invalid_argument)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text=excep.InvalidArgumentError();
-	}
-	catch (std::range_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.RangeError();
-	}
-	catch (std::out_of_range)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.OutOfRangeError();
-	}
-	catch (std::domain_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.BadDomainError();
-	}
-}
-private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)
-{
-	std::vector<Traveler> Travelers;
-	try
-	{
-		getTravelersDate(Travelers);
-		buttons = gcnew array<Button^>(19); //Button array
-		for (int iterator = 0; iterator < 19; iterator++)  //CREATE buttons for array
+		catch (std::invalid_argument)
 		{
-			this->pictureBox1->SendToBack();
-			Button^ btn = gcnew Button();
-			btn->Anchor = AnchorStyles::Top, Left;
-			btn = (gcnew System::Windows::Forms::Button());
-			btn->BringToFront();
-			btn->Location = Drawing::Point(0, 0);
-			btn->Text = iterator.ToString();
-			btn->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			btn->BackColor = System::Drawing::Color::Red;
-			btn->Size = System::Drawing::Size(12, 12);
-			Controls->Add(btn);
-			buttons[iterator] = btn;
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.InvalidArgumentError();
 		}
+		catch (std::range_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.RangeError();
+		}
+		catch (std::out_of_range)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.OutOfRangeError();
+		}
+		catch (std::domain_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.BadDomainError();
+		}
+	}
+	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)
+	{
+		std::vector<Traveler> Travelers;
+		try
+		{
+			DataLoader DataLoader;
+			DataLoader.getTravelersData(Travelers);
+			buttons = gcnew array<Button^>(19); //Button array
+			for (int iterator = 0; iterator < 19; iterator++)  //CREATE buttons for array
+			{
+				this->pictureBox1->SendToBack();
+				Button^ btn = gcnew Button();
+				btn->Anchor = AnchorStyles::Top, Left;
+				btn = (gcnew System::Windows::Forms::Button());
+				btn->BringToFront();
+				btn->Location = Drawing::Point(0, 0);
+				btn->Text = iterator.ToString();
+				btn->Click += gcnew System::EventHandler(this, &MyForm::INFBUT_Click);
+				btn->BackColor = System::Drawing::Color::Red;
+				btn->Size = System::Drawing::Size(12, 12);
+				Controls->Add(btn);
+				buttons[iterator] = btn;
+				
+			}
+			buttons[18]->BringToFront();
+			std::vector<int> A;
+			std::vector<int> B;
+			for (int i = 0; i < Travelers.size(); i++)
+			{
+				A = Travelers[i].getPointArrayX();
+				B = Travelers[i].getPointArrayY();
+				this->buttons[i]->Location = Drawing::Point(A[0], B[0]);
+				
+			}
+		}
+		catch (std::invalid_argument)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.InvalidArgumentError();
+		}
+		catch (std::range_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.RangeError();
+		}
+		catch (std::out_of_range)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.OutOfRangeError();
+		}
+		catch (std::overflow_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.OverflowError();
+		}
+		catch (std::logic_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.LogicFailureError();
+		}
+		catch (std::domain_error)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.BadDomainError();
+		}
+		catch (std::bad_exception)
+		{
+			show_find = gcnew FINDER;
+			show_find->Show(this);
+			this->show_find->find_button->Visible = false;
+			this->show_find->num_to_find->Text = excep.BadExceptionError();
+		}
+	}
+	private: System::Void MyForm_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e)
+	{
+		delete[] buttons;
+	}
+	private: System::Void INFBUT_Click(System::Object^  sender, System::EventArgs^  e)
+	{
 
-		std::vector<int> A;
-		std::vector<int> B;
-		for (int i = 0; i < Travelers.size(); i++)
-		{
-			A = Travelers[i].getPointArrayX();
-			B = Travelers[i].getPointArrayY();
-			this->buttons[i]->Location = Drawing::Point(A[0], B[0]);
-		}
-	}
-	catch (std::invalid_argument)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.InvalidArgumentError();
-	}
-	catch (std::range_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.RangeError();
-	}
-	catch (std::out_of_range)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.OutOfRangeError();
-	}
-	catch (std::overflow_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.OverflowError();
-	}
-	catch (std::logic_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.LogicFailureError();
-	}
-	catch (std::domain_error)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.BadDomainError();
-	}
-	catch (std::bad_exception)
-	{
-		show_find = gcnew FINDER;
-		show_find->Show(this);
-		this->show_find->find_button->Visible = false;
-		this->show_find->num_to_find->Text = excep.BadExceptionError();
-	}
-}
-private: System::Void MyForm_FormClosing(System::Object^  sender, System::Windows::Forms::FormClosingEventArgs^  e)
- {
-	delete[] buttons;
-}
-};
+		show_inf= gcnew INF;
+		show_inf->Show(this);
+		System::String^ conv;
+		conv = sender->ToString();
+		conv = conv->Substring(conv->Length-2);
+		int x = Int32::Parse(conv);
+		std::vector<Traveler> Travelers;
+		DataLoader DataLoader;
+		DataLoader.getTravelersData(Travelers);
+		show_inf->text_to_inf->Text = Travelers[x].getTravelNumber().ToString();
+		
+		
+	};
+	};
 }
 

@@ -2,7 +2,7 @@
 
 #include "Traveler.h";
 #include "WORKEXCEP.h";
-#include "dateloader.h";
+#include "dataloader.h";
 #include "FINDER.h";
 namespace KURS {
 
@@ -13,24 +13,18 @@ namespace KURS {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// —водка дл€ March
-	/// </summary>
+	
 	public ref class March : public System::Windows::Forms::Form
 	{
 	public:
 		March(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+		
 		}
 	public:FINDER^ show_find;
 	protected:
-		/// <summary>
-		/// ќсвободить все используемые ресурсы.
-		/// </summary>
+		
 		~March()
 		{
 			if (components)
@@ -45,16 +39,11 @@ namespace KURS {
 	private: System::Windows::Forms::Button^  Back_March;
 
 	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
+	
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
+		
 		void InitializeComponent(void)
 		{
 			this->March_rich = (gcnew System::Windows::Forms::RichTextBox());
@@ -104,9 +93,10 @@ namespace KURS {
 		WorkWithExceptions excep3;
 		try
 		{
+			DataLoader DataLoader;
 			this->March_rich->Text = "";
 			std::vector<Traveler> Travelers;
-			getTravelersDate(Travelers);
+			DataLoader.getTravelersData(Travelers);
 			for (int i = 0; i < 19; i++)
 			{
 				setlocale(LC_ALL, "ukr");

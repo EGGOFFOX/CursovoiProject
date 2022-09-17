@@ -17,9 +17,6 @@ namespace KURS {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	
-	/// <summary>
-	/// —водка дл€ HELP
-	/// </summary>
 	public ref class HELP : public System::Windows::Forms::Form
 	{
 	public:
@@ -27,16 +24,12 @@ namespace KURS {
 		HELP(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+		
 		}
 	
 	public:FINDER^ show_find;
 	protected:
-		/// <summary>
-		/// ќсвободить все используемые ресурсы.
-		/// </summary>
+		
 		~HELP()
 		{
 			if (components)
@@ -54,16 +47,11 @@ namespace KURS {
 	protected:
 
 	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
+		
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
+		
 		void InitializeComponent(void)
 		{
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());

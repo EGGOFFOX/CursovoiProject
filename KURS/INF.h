@@ -11,7 +11,7 @@
 #include "Traveler.h";
 #include <vector>;
 #include <sstream>;
-#include "dateloader.h";
+#include "dataloader.h";
 #include "FindPoint.h";
 #include "WORKEXCEP.h";
 #include <typeinfo>;
@@ -26,9 +26,7 @@ namespace KURS {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// —водка дл€ INF
-	/// </summary>
+
 	public ref class INF : public System::Windows::Forms::Form
 	{
 	public:
@@ -40,9 +38,7 @@ namespace KURS {
 	public:FINDER^ show_find;
 
 	protected:
-		/// <summary>
-		
-		/// </summary>
+
 		~INF()
 		{
 			if (components)
@@ -59,16 +55,11 @@ namespace KURS {
 	private: System::Windows::Forms::Button^  Back_button_inf;
 
 	private:
-		/// <summary>
-		/// ќб€зательна€ переменна€ конструктора.
-		/// </summary>
+
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
-		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
-		/// содержимое этого метода с помощью редактора кода.
-		/// </summary>
+
 		void InitializeComponent(void)
 		{
 			this->text_to_inf = (gcnew System::Windows::Forms::TextBox());
@@ -130,9 +121,10 @@ namespace KURS {
 		
 		try
 		{
+			DataLoader DataLoader;
 			this->rich_inf->Text = "";
 			std::vector<Traveler> Travelers;
-			getTravelersDate(Travelers);
+			DataLoader.getTravelersData(Travelers);
 			for (int i = 0; i < 19; i++)
 			{
 				std::stringstream converter;
