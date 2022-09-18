@@ -9,8 +9,7 @@ class DataLoader
 public:
 
 	void getTravelersData(std::vector<Traveler>& Travelers);
-	std::string fileJson = "datefiles/TRAVELINF.json";
-	std::string fileCsv = "datefiles/POINTS.csv";
+	
 
 	std::string parseJsonValue(std::string str, bool isValueString);
 
