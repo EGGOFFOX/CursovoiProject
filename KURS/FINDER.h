@@ -92,7 +92,7 @@ public: System::Windows::Forms::Button^  find_button;
 
 		}
 #pragma endregion
-	public: System::String^ tmp;
+	//public: System::String^ tmp;
 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e)
 	{
