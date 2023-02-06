@@ -127,8 +127,8 @@ namespace KURS {
 			DataLoader.getTravelersData(Travelers);
 			for (int i = 0; i < 19; i++)
 			{
-				std::stringstream converter;
-				int a = Travelers[i].getTravelNumber();
+				
+				
 				const type_info& ti_travelnumber = typeid(Travelers[i].getTravelNumber());
 				System::String^ conv;
 				conv = text_to_inf->Text;
